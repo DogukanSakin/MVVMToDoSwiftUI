@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct AppButton: View {
+    var label: String = ""
+    var color: Color = .appPrimary
+    var labelSize: CGFloat = 16
+    var action: () -> Void = {}
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: action, label: {
+            Text(label)
+                .padding()
+                .font(.regular(size: labelSize))
+                .frame(maxWidth: .infinity)
+        })
+        .background(color)
+        .clipShape(.buttonBorder)
+        .foregroundColor(.white)
     }
 }
 
 #Preview {
-    AppButton()
+    AppButton(label: "App Button"){}
 }

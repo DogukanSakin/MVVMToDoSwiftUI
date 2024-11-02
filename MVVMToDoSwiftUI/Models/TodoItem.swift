@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct TodoItem: Identifiable {
+    var id: UUID
+    var title: String
+    var categories: [Category] 
+}

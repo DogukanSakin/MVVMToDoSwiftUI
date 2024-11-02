@@ -9,7 +9,28 @@ import SwiftUI
 
 struct TodosView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Color.white
+                .edgesIgnoringSafeArea(.all)
+            
+            Header()
+        }
+    }
+}
+
+// MARK: - Header
+
+struct Header: View {
+    var body: some View {
+        VStack {
+            HStack {
+                Text("View")
+                    .padding()
+                Spacer()
+            }
+            Spacer()
+        }
+        
     }
 }
 

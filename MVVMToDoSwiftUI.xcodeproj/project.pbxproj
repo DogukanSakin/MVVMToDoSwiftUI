@@ -23,6 +23,11 @@
 		44BB094E2CD40C6E0059EE0D /* AssetColors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44BB094D2CD40C6E0059EE0D /* AssetColors.xcassets */; };
 		44BB09512CD40C9D0059EE0D /* AssetImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44BB09502CD40C9D0059EE0D /* AssetImages.xcassets */; };
 		44BB09532CD40E480059EE0D /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB09522CD40E480059EE0D /* Color+Extension.swift */; };
+		44CAF0372CD676EF008AACCC /* AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CAF0362CD676EF008AACCC /* AppButton.swift */; };
+		44CAF0392CD67A4E008AACCC /* TodosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CAF0382CD67A4E008AACCC /* TodosView.swift */; };
+		44CAF03B2CD68719008AACCC /* TodosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CAF03A2CD68719008AACCC /* TodosViewModel.swift */; };
+		44CAF03D2CD69A46008AACCC /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CAF03C2CD69A46008AACCC /* TodoItem.swift */; };
+		44CAF03F2CD69A4D008AACCC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CAF03E2CD69A4D008AACCC /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +68,11 @@
 		44BB094D2CD40C6E0059EE0D /* AssetColors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AssetColors.xcassets; sourceTree = "<group>"; };
 		44BB09502CD40C9D0059EE0D /* AssetImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AssetImages.xcassets; sourceTree = "<group>"; };
 		44BB09522CD40E480059EE0D /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		44CAF0362CD676EF008AACCC /* AppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButton.swift; sourceTree = "<group>"; };
+		44CAF0382CD67A4E008AACCC /* TodosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosView.swift; sourceTree = "<group>"; };
+		44CAF03A2CD68719008AACCC /* TodosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosViewModel.swift; sourceTree = "<group>"; };
+		44CAF03C2CD69A46008AACCC /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		44CAF03E2CD69A4D008AACCC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +123,8 @@
 		44BB09092CD3FA120059EE0D /* MVVMToDoSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				44BB09492CD409020059EE0D /* ViewModel */,
+				44CAF0352CD676E4008AACCC /* Components */,
+				44BB09492CD409020059EE0D /* ViewModels */,
 				44BB09482CD408F00059EE0D /* Views */,
 				44BB09472CD408EA0059EE0D /* Models */,
 				44BB09432CD3FEA00059EE0D /* Utilities */,
@@ -193,6 +204,8 @@
 		44BB09472CD408EA0059EE0D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				44CAF03C2CD69A46008AACCC /* TodoItem.swift */,
+				44CAF03E2CD69A4D008AACCC /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -201,15 +214,17 @@
 			isa = PBXGroup;
 			children = (
 				44BB090C2CD3FA120059EE0D /* WelcomeView.swift */,
+				44CAF0382CD67A4E008AACCC /* TodosView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		44BB09492CD409020059EE0D /* ViewModel */ = {
+		44BB09492CD409020059EE0D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				44CAF03A2CD68719008AACCC /* TodosViewModel.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		44BB094A2CD40BC40059EE0D /* Colors */ = {
@@ -226,6 +241,14 @@
 				44BB09502CD40C9D0059EE0D /* AssetImages.xcassets */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		44CAF0352CD676E4008AACCC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				44CAF0362CD676EF008AACCC /* AppButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,9 +389,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				44BB09462CD3FEBA0059EE0D /* Font+Extensions.swift in Sources */,
+				44CAF03B2CD68719008AACCC /* TodosViewModel.swift in Sources */,
 				44BB090D2CD3FA120059EE0D /* WelcomeView.swift in Sources */,
 				44BB090B2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift in Sources */,
 				44BB09532CD40E480059EE0D /* Color+Extension.swift in Sources */,
+				44CAF03F2CD69A4D008AACCC /* Category.swift in Sources */,
+				44CAF0392CD67A4E008AACCC /* TodosView.swift in Sources */,
+				44CAF03D2CD69A46008AACCC /* TodoItem.swift in Sources */,
+				44CAF0372CD676EF008AACCC /* AppButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
