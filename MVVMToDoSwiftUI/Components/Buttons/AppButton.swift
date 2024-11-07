@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AppButton: View {
     var label: String = ""
-    var color: Color = .appPrimary
+    var color: Color = .button
     var labelSize: CGFloat = 16
     var action: () -> Void = {}
     
@@ -17,12 +17,13 @@ struct AppButton: View {
         Button(action: action, label: {
             Text(label)
                 .padding()
-                .font(.regular(size: labelSize))
+                .font(.semiBold(size: labelSize))
                 .frame(maxWidth: .infinity)
         })
         .background(color)
-        .clipShape(.buttonBorder)
+        .clipShape(.capsule)
         .foregroundColor(.white)
+        
     }
 }
 

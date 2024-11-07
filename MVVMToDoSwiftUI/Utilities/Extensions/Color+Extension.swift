@@ -8,6 +8,7 @@
 import SwiftUI
 
 extension Color {
-    static let themePrimary = Color("AppPrimaryColor")
-    static let themeSecondary = Color("AppSecondaryColor")
+    static let button = Color("AppButton")
+    static let background = Color("PageBackground")
+   
 }
