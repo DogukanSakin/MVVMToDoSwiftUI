@@ -10,5 +10,11 @@ import Foundation
 struct TodoItem: Identifiable {
     var id: UUID
     var title: String
-    var categories: [Category] 
+    var date:Date
+    var description:String?
+    var category: Category
 }
+
+
+
+

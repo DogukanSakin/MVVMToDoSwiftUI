@@ -5,3 +5,14 @@
   Created by Doğukan Sakin on 7.11.2024.
   
 */
+
+// MARK: - Welcome Page Translations
+
+"welcome" = "Today'e hoş geldin!";
+"start" = "Başlayalım";
+
+// MARK: - Todos Page Translations
+
+"hello" = "Merhaba,";
+"tasks_waiting" = "Devam eden ( %d )";
+"completed" = "Tamamlananlar ( %d )";

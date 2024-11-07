@@ -12,3 +12,8 @@ struct Category: Identifiable {
     var name: String
     var todoItems: [TodoItem] 
 }
+
+
+let categoryWork = Category(id: UUID(), name: "Work", todoItems: [])
+let categoryPersonal = Category(id: UUID(), name: "Personal", todoItems: [])
+let categoryShopping = Category(id: UUID(), name: "Shopping", todoItems: [])

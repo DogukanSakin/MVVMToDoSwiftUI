@@ -10,12 +10,15 @@ import SwiftUI
 import SwiftUI
 
 struct WelcomeView: View {
+    // MARK: - States
+    
     @State private var navigateToTodos = false
     
+ 
     var body: some View {
         NavigationStack {
             ZStack {
-                LinearGradient(gradient: Gradient(colors: [Color.themePrimary.opacity(0.5), Color.themeSecondary.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
+                LinearGradient(gradient: Gradient(colors: [Color.welcomePagePrimary.opacity(0.5), Color.welcomePageSecondary.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
                     .edgesIgnoringSafeArea(.all)
                 
                 Circle()
@@ -39,19 +42,19 @@ struct WelcomeView: View {
                         .aspectRatio(contentMode: .fit)
                         .padding()
                     
-                    Text("Welcome to Today!")
+                    Text(String(localized: "welcome"))
                         .font(.system(size: 32, weight: .semibold))
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 4)
                         .padding(.top, 20)
                     
-                    AppButton(label: "Let's Start") {
+                    AppButton(label: String(localized: "start")) {
                         navigateToTodos = true
                     }
                     .padding()
                     .navigationDestination(isPresented: $navigateToTodos) {
-                        TodosView().navigationBarBackButtonHidden(true)
+                        TodoView().navigationBarBackButtonHidden(true)
                     }
                     
                     

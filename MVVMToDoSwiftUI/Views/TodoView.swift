@@ -8,15 +8,55 @@
 import SwiftUI
 
 struct TodoView: View {
-    @StateObject private var viewModel = TodosViewModel()
+    @StateObject private var viewModel = TodoViewModel()
     
     var body: some View {
         ZStack {
             Color.background
                 .edgesIgnoringSafeArea(.all)
             
-            ZStack{
+            VStack{
                 Header()
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(viewModel.todos, id: \.id) { todo in
+                            OnProgressTodoCard(todo: todo)
+                        }
+                    }
+                }
+                .padding(.top)
+                
+                Spacer()
+                
+                HStack{
+                    Text(String(format: NSLocalizedString("completed", comment: ""), 0))
+                        .font(.system(size: 14, weight: .regular))
+                        .padding(.top,2)
+                    
+                    Spacer()
+                }.padding(.top)
+                
+              
+                
+                ScrollView( showsIndicators: false) {
+                    ForEach(viewModel.todos, id: \.id) { todo in
+                        VStack(alignment:.leading){
+                            HStack{
+                                Text(todo.title)
+                                
+                                Spacer()
+                            }.padding(.top)
+                         
+                            
+                          
+                        }
+                      
+                    }
+                    
+                }
+                .padding(.top)
+                
             }.padding()
             
             VStack{
@@ -41,8 +81,13 @@ struct Header: View {
         VStack {
             HStack{
                 VStack(alignment:.leading){
-                    Text(String(localized: "hello")).foregroundStyle(.gray).font(.system(size: 12, weight: .regular))
-                    Text(String(format: NSLocalizedString("tasks_waiting", comment: ""), 0)).font(.system(size: 14, weight: .regular))
+                    Text(String(localized: "hello"))
+                        .foregroundStyle(.gray)
+                        .font(.system(size: 12, weight: .regular))
+                    
+                    Text(String(format: NSLocalizedString("tasks_waiting", comment: ""), 0))
+                        .font(.system(size: 14, weight: .regular))
+                        .padding(.top,2)
                 }
                 
                 Spacer()
@@ -63,7 +108,7 @@ struct Header: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             
-            Spacer()
+            
         }
         
     }

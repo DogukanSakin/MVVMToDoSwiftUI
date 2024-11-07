@@ -9,8 +9,8 @@ import Foundation
 
 class TodoViewModel:ObservableObject{
     @Published var todos: [TodoItem] = [
-        TodoItem(id: UUID(), title: "Complete SwiftUI tutorial", categories: [categoryWork]),
-        TodoItem(id: UUID(), title: "Buy groceries", categories: [categoryShopping]),
-        TodoItem(id: UUID(), title: "Finish reading book", categories: [categoryPersonal])
+        TodoItem(id: UUID(), title: "Complete SwiftUI tutorial",date: .now, category: categoryWork),
+        TodoItem(id: UUID(), title: "Buy groceries", date: .now,category: categoryShopping),
+        TodoItem(id: UUID(), title: "Finish reading book", date: .now,category: categoryPersonal)
     ]
 }

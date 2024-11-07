@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4483BB672CDD25060058B8CF /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4483BB632CDD25060058B8CF /* Montserrat-Regular.ttf */; };
+		4483BB682CDD25060058B8CF /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4483BB642CDD25060058B8CF /* Montserrat-SemiBold.ttf */; };
+		4483BB6A2CDD25060058B8CF /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4483BB662CDD25060058B8CF /* Montserrat-Medium.ttf */; };
+		4483BB6E2CDD285A0058B8CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4483BB6C2CDD285A0058B8CF /* Localizable.strings */; };
+		4483BB712CDD32F50058B8CF /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4483BB702CDD32F50058B8CF /* FloatingButton.swift */; };
+		4483BB752CDD3D3D0058B8CF /* OnProgressTodoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4483BB742CDD3D3D0058B8CF /* OnProgressTodoCard.swift */; };
 		44BB090B2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB090A2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift */; };
 		44BB090D2CD3FA120059EE0D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB090C2CD3FA120059EE0D /* WelcomeView.swift */; };
 		44BB090F2CD3FA130059EE0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44BB090E2CD3FA130059EE0D /* Assets.xcassets */; };
@@ -15,17 +21,13 @@
 		44BB09262CD3FA130059EE0D /* MVVMToDoSwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB09252CD3FA130059EE0D /* MVVMToDoSwiftUIUITests.swift */; };
 		44BB09282CD3FA130059EE0D /* MVVMToDoSwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB09272CD3FA130059EE0D /* MVVMToDoSwiftUIUITestsLaunchTests.swift */; };
 		44BB093C2CD3FD040059EE0D /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44BB09362CD3FD040059EE0D /* Montserrat-Bold.ttf */; };
-		44BB093E2CD3FD040059EE0D /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44BB09382CD3FD040059EE0D /* Montserrat-Medium.ttf */; };
-		44BB093F2CD3FD040059EE0D /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44BB09392CD3FD040059EE0D /* Montserrat-SemiBold.ttf */; };
-		44BB09402CD3FD040059EE0D /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44BB093A2CD3FD040059EE0D /* Montserrat-Light.ttf */; };
-		44BB09412CD3FD040059EE0D /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44BB093B2CD3FD040059EE0D /* Montserrat-Regular.ttf */; };
 		44BB09462CD3FEBA0059EE0D /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB09452CD3FEBA0059EE0D /* Font+Extensions.swift */; };
 		44BB094E2CD40C6E0059EE0D /* AssetColors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44BB094D2CD40C6E0059EE0D /* AssetColors.xcassets */; };
 		44BB09512CD40C9D0059EE0D /* AssetImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44BB09502CD40C9D0059EE0D /* AssetImages.xcassets */; };
 		44BB09532CD40E480059EE0D /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB09522CD40E480059EE0D /* Color+Extension.swift */; };
 		44CAF0372CD676EF008AACCC /* AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CAF0362CD676EF008AACCC /* AppButton.swift */; };
-		44CAF0392CD67A4E008AACCC /* TodosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CAF0382CD67A4E008AACCC /* TodosView.swift */; };
-		44CAF03B2CD68719008AACCC /* TodosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CAF03A2CD68719008AACCC /* TodosViewModel.swift */; };
+		44CAF0392CD67A4E008AACCC /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CAF0382CD67A4E008AACCC /* TodoView.swift */; };
+		44CAF03B2CD68719008AACCC /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CAF03A2CD68719008AACCC /* TodoViewModel.swift */; };
 		44CAF03D2CD69A46008AACCC /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CAF03C2CD69A46008AACCC /* TodoItem.swift */; };
 		44CAF03F2CD69A4D008AACCC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CAF03E2CD69A4D008AACCC /* Category.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +50,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4483BB632CDD25060058B8CF /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		4483BB642CDD25060058B8CF /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		4483BB662CDD25060058B8CF /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		4483BB6D2CDD285A0058B8CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4483BB6F2CDD28E90058B8CF /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4483BB702CDD32F50058B8CF /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
+		4483BB742CDD3D3D0058B8CF /* OnProgressTodoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnProgressTodoCard.swift; sourceTree = "<group>"; };
 		44BB09072CD3FA120059EE0D /* MVVMToDoSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMToDoSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44BB090A2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMToDoSwiftUIApp.swift; sourceTree = "<group>"; };
 		44BB090C2CD3FA120059EE0D /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -58,19 +67,15 @@
 		44BB09212CD3FA130059EE0D /* MVVMToDoSwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVVMToDoSwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44BB09252CD3FA130059EE0D /* MVVMToDoSwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMToDoSwiftUIUITests.swift; sourceTree = "<group>"; };
 		44BB09272CD3FA130059EE0D /* MVVMToDoSwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMToDoSwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		44BB09362CD3FD040059EE0D /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "../../../../../Downloads/Montserrat/static/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
-		44BB09382CD3FD040059EE0D /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Medium.ttf"; path = "../../../../../Downloads/Montserrat/static/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
-		44BB09392CD3FD040059EE0D /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-SemiBold.ttf"; path = "../../../../../Downloads/Montserrat/static/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
-		44BB093A2CD3FD040059EE0D /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Light.ttf"; path = "../../../../../Downloads/Montserrat/static/Montserrat-Light.ttf"; sourceTree = "<group>"; };
-		44BB093B2CD3FD040059EE0D /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "../../../../../Downloads/Montserrat/static/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		44BB09362CD3FD040059EE0D /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		44BB09422CD3FDB20059EE0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		44BB09452CD3FEBA0059EE0D /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
 		44BB094D2CD40C6E0059EE0D /* AssetColors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AssetColors.xcassets; sourceTree = "<group>"; };
 		44BB09502CD40C9D0059EE0D /* AssetImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AssetImages.xcassets; sourceTree = "<group>"; };
 		44BB09522CD40E480059EE0D /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		44CAF0362CD676EF008AACCC /* AppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButton.swift; sourceTree = "<group>"; };
-		44CAF0382CD67A4E008AACCC /* TodosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosView.swift; sourceTree = "<group>"; };
-		44CAF03A2CD68719008AACCC /* TodosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosViewModel.swift; sourceTree = "<group>"; };
+		44CAF0382CD67A4E008AACCC /* TodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoView.swift; sourceTree = "<group>"; };
+		44CAF03A2CD68719008AACCC /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
 		44CAF03C2CD69A46008AACCC /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		44CAF03E2CD69A4D008AACCC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +105,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4483BB6B2CDD28370058B8CF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4483BB6C2CDD285A0058B8CF /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4483BB722CDD3D190058B8CF /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				44CAF0362CD676EF008AACCC /* AppButton.swift */,
+				4483BB702CDD32F50058B8CF /* FloatingButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		4483BB732CDD3D310058B8CF /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				4483BB742CDD3D3D0058B8CF /* OnProgressTodoCard.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
 		44BB08FE2CD3FA120059EE0D = {
 			isa = PBXGroup;
 			children = (
@@ -123,16 +153,15 @@
 		44BB09092CD3FA120059EE0D /* MVVMToDoSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				44BB09432CD3FEA00059EE0D /* Utilities */,
+				44BB09342CD3FC550059EE0D /* Assets */,
+				4483BB6B2CDD28370058B8CF /* Resources */,
 				44CAF0352CD676E4008AACCC /* Components */,
 				44BB09492CD409020059EE0D /* ViewModels */,
 				44BB09482CD408F00059EE0D /* Views */,
 				44BB09472CD408EA0059EE0D /* Models */,
-				44BB09432CD3FEA00059EE0D /* Utilities */,
 				44BB09422CD3FDB20059EE0D /* Info.plist */,
-				44BB09342CD3FC550059EE0D /* Assets */,
 				44BB090A2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift */,
-				44BB090E2CD3FA130059EE0D /* Assets.xcassets */,
-				44BB09102CD3FA130059EE0D /* Preview Content */,
 			);
 			path = MVVMToDoSwiftUI;
 			sourceTree = "<group>";
@@ -165,6 +194,8 @@
 		44BB09342CD3FC550059EE0D /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				44BB090E2CD3FA130059EE0D /* Assets.xcassets */,
+				44BB09102CD3FA130059EE0D /* Preview Content */,
 				44BB094F2CD40C890059EE0D /* Images */,
 				44BB094A2CD40BC40059EE0D /* Colors */,
 				44BB09352CD3FC5E0059EE0D /* Fonts */,
@@ -176,10 +207,9 @@
 			isa = PBXGroup;
 			children = (
 				44BB09362CD3FD040059EE0D /* Montserrat-Bold.ttf */,
-				44BB093A2CD3FD040059EE0D /* Montserrat-Light.ttf */,
-				44BB09382CD3FD040059EE0D /* Montserrat-Medium.ttf */,
-				44BB093B2CD3FD040059EE0D /* Montserrat-Regular.ttf */,
-				44BB09392CD3FD040059EE0D /* Montserrat-SemiBold.ttf */,
+				4483BB662CDD25060058B8CF /* Montserrat-Medium.ttf */,
+				4483BB632CDD25060058B8CF /* Montserrat-Regular.ttf */,
+				4483BB642CDD25060058B8CF /* Montserrat-SemiBold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -214,7 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				44BB090C2CD3FA120059EE0D /* WelcomeView.swift */,
-				44CAF0382CD67A4E008AACCC /* TodosView.swift */,
+				44CAF0382CD67A4E008AACCC /* TodoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -222,7 +252,7 @@
 		44BB09492CD409020059EE0D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				44CAF03A2CD68719008AACCC /* TodosViewModel.swift */,
+				44CAF03A2CD68719008AACCC /* TodoViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -246,7 +276,8 @@
 		44CAF0352CD676E4008AACCC /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				44CAF0362CD676EF008AACCC /* AppButton.swift */,
+				4483BB732CDD3D310058B8CF /* Cards */,
+				4483BB722CDD3D190058B8CF /* Buttons */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -337,6 +368,7 @@
 			knownRegions = (
 				en,
 				Base,
+				tr,
 			);
 			mainGroup = 44BB08FE2CD3FA120059EE0D;
 			productRefGroup = 44BB09082CD3FA120059EE0D /* Products */;
@@ -355,14 +387,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44BB09412CD3FD040059EE0D /* Montserrat-Regular.ttf in Resources */,
+				4483BB682CDD25060058B8CF /* Montserrat-SemiBold.ttf in Resources */,
 				44BB09512CD40C9D0059EE0D /* AssetImages.xcassets in Resources */,
-				44BB09402CD3FD040059EE0D /* Montserrat-Light.ttf in Resources */,
 				44BB094E2CD40C6E0059EE0D /* AssetColors.xcassets in Resources */,
-				44BB093F2CD3FD040059EE0D /* Montserrat-SemiBold.ttf in Resources */,
 				44BB09122CD3FA130059EE0D /* Preview Assets.xcassets in Resources */,
-				44BB093E2CD3FD040059EE0D /* Montserrat-Medium.ttf in Resources */,
+				4483BB6E2CDD285A0058B8CF /* Localizable.strings in Resources */,
 				44BB090F2CD3FA130059EE0D /* Assets.xcassets in Resources */,
+				4483BB6A2CDD25060058B8CF /* Montserrat-Medium.ttf in Resources */,
+				4483BB672CDD25060058B8CF /* Montserrat-Regular.ttf in Resources */,
 				44BB093C2CD3FD040059EE0D /* Montserrat-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,12 +421,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				44BB09462CD3FEBA0059EE0D /* Font+Extensions.swift in Sources */,
-				44CAF03B2CD68719008AACCC /* TodosViewModel.swift in Sources */,
+				44CAF03B2CD68719008AACCC /* TodoViewModel.swift in Sources */,
 				44BB090D2CD3FA120059EE0D /* WelcomeView.swift in Sources */,
+				4483BB752CDD3D3D0058B8CF /* OnProgressTodoCard.swift in Sources */,
 				44BB090B2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift in Sources */,
 				44BB09532CD40E480059EE0D /* Color+Extension.swift in Sources */,
 				44CAF03F2CD69A4D008AACCC /* Category.swift in Sources */,
-				44CAF0392CD67A4E008AACCC /* TodosView.swift in Sources */,
+				44CAF0392CD67A4E008AACCC /* TodoView.swift in Sources */,
+				4483BB712CDD32F50058B8CF /* FloatingButton.swift in Sources */,
 				44CAF03D2CD69A46008AACCC /* TodoItem.swift in Sources */,
 				44CAF0372CD676EF008AACCC /* AppButton.swift in Sources */,
 			);
@@ -432,12 +466,25 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		4483BB6C2CDD285A0058B8CF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4483BB6D2CDD285A0058B8CF /* en */,
+				4483BB6F2CDD28E90058B8CF /* tr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		44BB09292CD3FA130059EE0D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -501,6 +548,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -559,7 +607,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MVVMToDoSwiftUI/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MVVMToDoSwiftUI/Assets/Preview Content\"";
 				DEVELOPMENT_TEAM = ZHAY9X6DYX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -589,7 +637,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MVVMToDoSwiftUI/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MVVMToDoSwiftUI/Assets/Preview Content\"";
 				DEVELOPMENT_TEAM = ZHAY9X6DYX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
