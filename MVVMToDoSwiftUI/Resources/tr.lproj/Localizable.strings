@@ -16,3 +16,4 @@
 "hello" = "Merhaba,";
 "tasks_waiting" = "Devam eden ( %d )";
 "completed" = "Tamamlananlar ( %d )";
+"view_more" = "Hepsini Gör";

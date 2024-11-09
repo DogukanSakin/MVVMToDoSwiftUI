@@ -3,49 +3,69 @@ import SwiftUI
 struct OnProgressTodoCard: View {
     let todo: TodoItem
     
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        return formatter
-    }()
+    // MARK: - Render
     
     var body: some View {
         ZStack {
             Color.white
-                .cornerRadius(15)
             
             VStack{
                 HStack {
                     VStack(alignment:.leading){
+                        
                         Text(todo.title)
                             .font(.semiBold(size: 16))
                             .lineLimit(1)
-                        
-                        Text("\(todo.date, formatter: dateFormatter)")
-                            .font(.regular(size: 12))
-                            .foregroundStyle(.gray)
-                            .padding(.top,2)
+     
+                        if todo.description != nil {
+                            Text(todo.description!)
+                                .font(.regular(size: 12))
+                                .lineLimit(2)
+                                .foregroundStyle(.gray)
+                                .padding(.top,1)
+                        }
                         
                     }
                     
-                    
                     Spacer()
                     
-                
                 }
                 
                 Spacer()
+                
+                HStack{
+                    
+                    HStack {
+                        Image(systemName: "clock.fill")
+                            .foregroundColor(.gray)
+                            .font(.system(size: 12))
+                        
+                        Text("\(todo.date, formatter: Formatter.dateFormatter)")
+                            .font(.regular(size: 12))
+                            .foregroundStyle(.gray)
+                            .padding(.top,1)
+                    }
+                    
+                    Spacer()
+                }
+                
             }.padding()
             
             
-            
+            VStack {
+                Spacer()
+                
+                Rectangle()
+                    .fill(Color.yellow)
+                    .frame(height: 4)
+                    .frame(maxWidth: .infinity)
+                
+            }
         }
-        .frame(width: 300, height: 200)
+        .frame(width: 300, height: 120)
+        .clipShape(RoundedRectangle(cornerRadius: 15))
+        
     }
-    
-    
-    
-    
     
 }
 

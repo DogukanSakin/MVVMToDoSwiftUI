@@ -9,67 +9,73 @@ import SwiftUI
 
 struct TodoView: View {
     @StateObject private var viewModel = TodoViewModel()
+    @State private var showingPlusSheet = false
     
     var body: some View {
+        
         ZStack {
             Color.background
-                .edgesIgnoringSafeArea(.all)
+                .ignoresSafeArea(.all)
             
-            VStack{
-                Header()
+            ScrollView(showsIndicators: false) {
                 
-                ScrollView(.horizontal, showsIndicators: false) {
+                VStack{
+                    Header().padding()
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(viewModel.onProgressTodos.indices, id: \.self) {  index in
+                                OnProgressTodoCard(todo: viewModel.onProgressTodos[index])
+                                    .padding(.leading, index == 0 ? 16 : 0)
+                                    .padding(.trailing, index == viewModel.onProgressTodos.count - 1 ? 16 : 0)
+                                    .padding(.horizontal, (index != 0 && index != viewModel.onProgressTodos.count - 1) ? 4 : 0)
+                            }
+                        }
+                    }
+                    .padding(.bottom)
+                    
+                    Spacer()
+                    
                     HStack {
-                        ForEach(viewModel.todos, id: \.id) { todo in
-                            OnProgressTodoCard(todo: todo)
+                        Text(String(format: NSLocalizedString("completed", comment: ""), viewModel.completedTodos.count))
+                            .font(.system(size: 14, weight: .regular))
+                        
+                        Spacer()
+                        
+                        Button(action:{}){
+                            Text(String(localized: "view_more"))
+                                .font(.system(size: 14, weight: .regular))
                         }
+                        
+                        
                     }
-                }
-                .padding(.top)
-                
-                Spacer()
-                
-                HStack{
-                    Text(String(format: NSLocalizedString("completed", comment: ""), 0))
-                        .font(.system(size: 14, weight: .regular))
-                        .padding(.top,2)
+                    .padding([.top, .horizontal])
                     
-                    Spacer()
-                }.padding(.top)
-                
-              
-                
-                ScrollView( showsIndicators: false) {
-                    ForEach(viewModel.todos, id: \.id) { todo in
-                        VStack(alignment:.leading){
-                            HStack{
-                                Text(todo.title)
+                    ScrollView( showsIndicators: false) {
+                        ForEach(viewModel.onProgressTodos, id: \.id) { todo in
+                            VStack(alignment:.leading){
+                                CompletedTodoCard(todo: todo)
                                 
-                                Spacer()
-                            }.padding(.top)
-                         
+                            }
                             
-                          
                         }
-                      
+                        
                     }
+                    .padding()
                     
-                }
-                .padding(.top)
-                
-            }.padding()
-            
-            VStack{
-                Spacer()
-                
-                HStack {
                     Spacer()
                     
-                    FloatingButton()
+                    FloatingButton(action: {
+                        showingPlusSheet.toggle()
+                    })
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                    
                 }
+                
             }
-            
-            
+        }.sheet(isPresented: $showingPlusSheet) {
+            Text("Plus Sheet")
         }
     }
 }
@@ -77,6 +83,8 @@ struct TodoView: View {
 // MARK: - Header
 
 struct Header: View {
+    @StateObject private var viewModel = TodoViewModel()
+    
     var body: some View {
         VStack {
             HStack{
@@ -85,7 +93,7 @@ struct Header: View {
                         .foregroundStyle(.gray)
                         .font(.system(size: 12, weight: .regular))
                     
-                    Text(String(format: NSLocalizedString("tasks_waiting", comment: ""), 0))
+                    Text(String(format: NSLocalizedString("tasks_waiting", comment: ""), viewModel.onProgressTodos.count))
                         .font(.system(size: 14, weight: .regular))
                         .padding(.top,2)
                 }

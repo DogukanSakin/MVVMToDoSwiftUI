@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		446A0B6D2CDFB9EE000138FD /* CompletedTodoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A0B6C2CDFB9EE000138FD /* CompletedTodoCard.swift */; };
+		446A0B702CDFBAA9000138FD /* Formatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A0B6F2CDFBAA9000138FD /* Formatter+Extension.swift */; };
 		4483BB672CDD25060058B8CF /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4483BB632CDD25060058B8CF /* Montserrat-Regular.ttf */; };
 		4483BB682CDD25060058B8CF /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4483BB642CDD25060058B8CF /* Montserrat-SemiBold.ttf */; };
 		4483BB6A2CDD25060058B8CF /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4483BB662CDD25060058B8CF /* Montserrat-Medium.ttf */; };
@@ -50,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		446A0B6C2CDFB9EE000138FD /* CompletedTodoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTodoCard.swift; sourceTree = "<group>"; };
+		446A0B6F2CDFBAA9000138FD /* Formatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Extension.swift"; sourceTree = "<group>"; };
 		4483BB632CDD25060058B8CF /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		4483BB642CDD25060058B8CF /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		4483BB662CDD25060058B8CF /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				4483BB6C2CDD285A0058B8CF /* Localizable.strings */,
+				44BB09342CD3FC550059EE0D /* Assets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				4483BB742CDD3D3D0058B8CF /* OnProgressTodoCard.swift */,
+				446A0B6C2CDFB9EE000138FD /* CompletedTodoCard.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -154,7 +160,6 @@
 			isa = PBXGroup;
 			children = (
 				44BB09432CD3FEA00059EE0D /* Utilities */,
-				44BB09342CD3FC550059EE0D /* Assets */,
 				4483BB6B2CDD28370058B8CF /* Resources */,
 				44CAF0352CD676E4008AACCC /* Components */,
 				44BB09492CD409020059EE0D /* ViewModels */,
@@ -227,6 +232,7 @@
 			children = (
 				44BB09452CD3FEBA0059EE0D /* Font+Extensions.swift */,
 				44BB09522CD40E480059EE0D /* Color+Extension.swift */,
+				446A0B6F2CDFBAA9000138FD /* Formatter+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -427,6 +433,8 @@
 				44BB090B2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift in Sources */,
 				44BB09532CD40E480059EE0D /* Color+Extension.swift in Sources */,
 				44CAF03F2CD69A4D008AACCC /* Category.swift in Sources */,
+				446A0B702CDFBAA9000138FD /* Formatter+Extension.swift in Sources */,
+				446A0B6D2CDFB9EE000138FD /* CompletedTodoCard.swift in Sources */,
 				44CAF0392CD67A4E008AACCC /* TodoView.swift in Sources */,
 				4483BB712CDD32F50058B8CF /* FloatingButton.swift in Sources */,
 				44CAF03D2CD69A46008AACCC /* TodoItem.swift in Sources */,
@@ -607,7 +615,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MVVMToDoSwiftUI/Assets/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MVVMToDoSwiftUI/Resources/Assets/Preview Content\"";
 				DEVELOPMENT_TEAM = ZHAY9X6DYX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -637,7 +645,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MVVMToDoSwiftUI/Assets/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MVVMToDoSwiftUI/Resources/Assets/Preview Content\"";
 				DEVELOPMENT_TEAM = ZHAY9X6DYX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

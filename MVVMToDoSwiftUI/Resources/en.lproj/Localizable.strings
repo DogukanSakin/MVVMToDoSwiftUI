@@ -16,3 +16,4 @@
 "hello" = "Hello,";
 "tasks_waiting" = "On progress ( %d )";
 "completed" = "Completed ( %d )";
+"view_more" = "View More";
