@@ -8,17 +8,20 @@
 import SwiftUI
 
 struct CompletedTodoCard: View {
-    var todo:TodoItem
+    let todo:TodoItem
     
     var body: some View {
         ZStack{
             Color.white
             
             HStack {
-                Rectangle()
-                    .fill(Color.yellow)
-                    .frame(width: 4)
-                    .padding(.trailing)
+                if let todoCategory = todo.category {
+                    Rectangle()
+                        .fill(todoCategory.color)
+                        .frame(width: 4)
+                        .padding(.trailing)
+                }
+              
                 
                 VStack(alignment: .leading){
                     Text(todo.title)
@@ -46,8 +49,9 @@ struct CompletedTodoCard: View {
                 
                 Spacer()
                 
+               
                 Image(systemName: "checkmark.seal.fill")
-                    .foregroundColor(.yellow)
+                    .foregroundColor(todo.category?.color ?? .green)
                     .font(.system(size: 24))
                     .padding(.trailing)
                 

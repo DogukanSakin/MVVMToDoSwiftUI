@@ -12,7 +12,7 @@ struct TodoItem: Identifiable {
     var title: String
     var date:Date
     var description:String?
-    var category: Category
+    var category: Category?
 }
 
 

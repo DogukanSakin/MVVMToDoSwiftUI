@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import SwiftUI
+
+class CategoryViewModel: ObservableObject {
+    @Published var newCategory: Category = Category(id: .init(),name: "", color: .red)
+    @Published var categories: [Category] = []
+    
+}

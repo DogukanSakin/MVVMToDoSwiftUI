@@ -75,7 +75,7 @@ struct TodoView: View {
                 
             }
         }.sheet(isPresented: $showingPlusSheet) {
-            Text("Plus Sheet")
+            PlusSheetView()
         }
     }
 }
@@ -116,9 +116,45 @@ struct Header: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             
-            
         }
         
+    }
+}
+
+// MARK: - Plus Sheet View
+
+struct PlusSheetView: View {
+    @State private var selectedTab = 0
+    
+    var body: some View {
+        ZStack {
+            Color(.systemGray6)
+                .ignoresSafeArea(.all)
+            
+            VStack {
+                HStack{
+                    TabButton(label:String(localized: "add_new_todo")  ,isSelected: selectedTab == 0){
+                        selectedTab = 0
+                    }
+                    
+                    TabButton(label:String(localized: "add_new_category")  ,isSelected: selectedTab == 1){
+                        selectedTab = 1
+                    }
+                }
+                .padding(.top)
+                
+                Divider()
+                
+                TabView(selection: $selectedTab){
+                    AddTodoView().tag(0)
+                    
+                    AddCategoryView().tag(1)
+                }
+                
+                Spacer()
+                
+            }.padding()
+        }
     }
 }
 

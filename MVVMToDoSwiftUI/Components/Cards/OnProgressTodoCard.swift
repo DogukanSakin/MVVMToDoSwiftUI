@@ -55,10 +55,14 @@ struct OnProgressTodoCard: View {
             VStack {
                 Spacer()
                 
-                Rectangle()
-                    .fill(Color.yellow)
-                    .frame(height: 4)
-                    .frame(maxWidth: .infinity)
+                if let todoCategory = todo.category {
+                    Rectangle()
+                        .fill(todoCategory.color)
+                        .frame(height: 4)
+                        .frame(maxWidth: .infinity)
+                }
+                
+               
                 
             }
         }

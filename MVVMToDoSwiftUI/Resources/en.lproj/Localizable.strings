@@ -17,3 +17,15 @@
 "tasks_waiting" = "On progress ( %d )";
 "completed" = "Completed ( %d )";
 "view_more" = "View More";
+"add_new_todo" = "Add Todo";
+"add_new_category" = "Add Category";
+
+// MARK: - Form Common
+
+"preview" = "Preview";
+
+// MARK: - Add Category Form
+
+"category_name" = "Category Name";
+"category_color" = "Category Color";
+

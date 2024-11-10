@@ -9,7 +9,12 @@ import SwiftUI
 
 struct AddTodoView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Color(.systemGray6)
+                .ignoresSafeArea(.all)
+            
+            Text("Add Todo")
+        }
     }
 }
 

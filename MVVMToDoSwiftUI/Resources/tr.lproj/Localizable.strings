@@ -17,3 +17,14 @@
 "tasks_waiting" = "Devam eden ( %d )";
 "completed" = "Tamamlananlar ( %d )";
 "view_more" = "Hepsini Gör";
+"add_new_todo" = "Todo Ekle";
+"add_new_category" = "Kategori Ekle";
+
+// MARK: - Form Common
+
+"preview" = "Önizleme";
+
+// MARK: - Add Category Form
+
+"category_name" = "Kategori Adı";
+"category_color" = "Kategori Rengi";
