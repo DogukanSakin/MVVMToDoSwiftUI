@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CategoryCard: View {
     let category:Category
+    var width:CGFloat = 160
     
     var body: some View {
         ZStack{
@@ -22,10 +23,13 @@ struct CategoryCard: View {
                 Text(category.name)
                     .font(.semiBold(size: 16))
                     .lineLimit(1)
+                
+                Spacer()
+
             }.padding(.horizontal)
             
         }
-        .frame(width: 160, height: 120)
+        .frame(width: width, height: 120)
         .clipShape(RoundedRectangle(cornerRadius: 15))
         .overlay(
             RoundedRectangle(cornerRadius: 15)

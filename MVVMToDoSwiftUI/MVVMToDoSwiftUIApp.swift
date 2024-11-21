@@ -9,9 +9,19 @@ import SwiftUI
 
 @main
 struct MVVMToDoSwiftUIApp: App {
+    @StateObject private var todoViewModel = TodoViewModel()
+    @StateObject private var categoryViewModel = CategoryViewModel()
+    
+    let isFirstLaunch = false
+    
     var body: some Scene {
         WindowGroup {
-            WelcomeView()
+            if isFirstLaunch {
+                WelcomeView()
+            }else{
+                TodoView().environmentObject(todoViewModel).environmentObject(categoryViewModel)
+            }
+          
         }
     }
 }

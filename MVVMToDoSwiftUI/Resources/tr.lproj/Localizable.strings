@@ -16,6 +16,7 @@
 "hello" = "Merhaba,";
 "tasks_waiting" = "Devam eden ( %d )";
 "completed" = "Tamamlananlar ( %d )";
+"categories" = "Kategoriler";
 "view_more" = "Hepsini Gör";
 "add_new_todo" = "Todo Ekle";
 "add_new_category" = "Kategori Ekle";
@@ -28,3 +29,8 @@
 
 "category_name" = "Kategori Adı";
 "category_color" = "Kategori Rengi";
+
+// MARK: - Add Category Form Validations
+
+"empty_category_name" = "Kategori adı boş bırakılamaz.";
+"already_added_category_name" = "Bu renkte ve kategori adında daha önce bir kategori mevcut.";

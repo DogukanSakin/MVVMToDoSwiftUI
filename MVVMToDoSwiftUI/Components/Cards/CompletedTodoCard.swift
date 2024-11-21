@@ -18,7 +18,7 @@ struct CompletedTodoCard: View {
                 if let todoCategory = todo.category {
                     Rectangle()
                         .fill(todoCategory.color)
-                        .frame(width: 4)
+                        .frame(width: 6)
                         .padding(.trailing)
                 }
               
@@ -38,12 +38,18 @@ struct CompletedTodoCard: View {
                     
                     Spacer()
                     
-                    Text("\(todo.date, formatter: Formatter.dateFormatter)")
-                        .font(.regular(size: 12))
-                        .foregroundStyle(.gray)
-                        .padding(.top,1)
+                    HStack {
+                        Image(systemName: "clock.fill")
+                            .foregroundColor(.gray)
+                            .font(.system(size: 12))
+                        
+                        Text("\(todo.date, formatter: Formatter.dateFormatter)")
+                            .font(.regular(size: 12))
+                            .foregroundStyle(.gray)
+                        
+                    }.padding(.bottom,6)
                     
-                    Spacer()
+             
                     
                 }.padding(.top)
                 

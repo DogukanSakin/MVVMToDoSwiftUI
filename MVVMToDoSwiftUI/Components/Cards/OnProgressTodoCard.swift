@@ -58,7 +58,7 @@ struct OnProgressTodoCard: View {
                 if let todoCategory = todo.category {
                     Rectangle()
                         .fill(todoCategory.color)
-                        .frame(height: 4)
+                        .frame(height: 6)
                         .frame(maxWidth: .infinity)
                 }
                 
