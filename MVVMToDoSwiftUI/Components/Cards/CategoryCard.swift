@@ -13,28 +13,59 @@ struct CategoryCard: View {
     
     var body: some View {
         ZStack{
-            Color.white
+            LinearGradient(gradient: Gradient(colors: [category.color.opacity(0.4),category.color.opacity(0.6) ,category.color.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
+                .edgesIgnoringSafeArea(.all)
             
-            HStack{
+            ZStack{
                 Circle()
-                    .fill(category.color)
-                    .frame(width: 14, height: 14)
+                    .stroke(Color.white.opacity(0.2),lineWidth: 12)
+                    .frame(width: 80, height: 80)
+                    .position(x: 10, y: 10)
+                
+                Circle()
+                    .stroke(Color.white.opacity(0.2),lineWidth: 12)
+                    .frame(width: 80, height: 80)
+                    .position(x: 90, y: 90)
+                
+                Circle()
+                    .stroke(Color.white.opacity(0.2),lineWidth: 12)
+                    .frame(width: 80, height: 80)
+                    .position(x: 10, y: width)
+            }.blur(radius: 2)
+            
+            VStack {
+                Spacer()
                 
                 Text(category.name)
                     .font(.semiBold(size: 16))
-                    .lineLimit(1)
-                
+                    .multilineTextAlignment(.center)
+                    
                 Spacer()
-
-            }.padding(.horizontal)
+                
+                if let categoryTasks = category.todoItems {
+                    HStack(alignment:.bottom) {
+                        Spacer()
+                        
+                        Text(String(format: NSLocalizedString("category_tasks", comment: ""), categoryTasks.count))
+                            .font(.medium(size: 12))
+                            .foregroundStyle(.gray)
+                    }
+                }
+            }.padding()
+            
+            
+           
+            
+          
+            
+       
+      
             
         }
-        .frame(width: width, height: 120)
+        .frame(width: width, height: 180)
         .clipShape(RoundedRectangle(cornerRadius: 15))
-        .overlay(
-            RoundedRectangle(cornerRadius: 15)
-                .stroke(category.color, lineWidth: 1)
-        )
+      
+       
     }
 }
 

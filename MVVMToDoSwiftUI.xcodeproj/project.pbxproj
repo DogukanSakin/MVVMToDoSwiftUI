@@ -12,14 +12,13 @@
 		445D575E2CE0D84800A622E3 /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D575D2CE0D84800A622E3 /* AddCategoryView.swift */; };
 		445D57622CE0D8FF00A622E3 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D57612CE0D8FF00A622E3 /* CategoryViewModel.swift */; };
 		445D57662CE0E3BE00A622E3 /* CategoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D57652CE0E3BE00A622E3 /* CategoryCard.swift */; };
-		446A0B6D2CDFB9EE000138FD /* CompletedTodoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A0B6C2CDFB9EE000138FD /* CompletedTodoCard.swift */; };
 		446A0B702CDFBAA9000138FD /* Formatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A0B6F2CDFBAA9000138FD /* Formatter+Extension.swift */; };
 		4483BB672CDD25060058B8CF /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4483BB632CDD25060058B8CF /* Montserrat-Regular.ttf */; };
 		4483BB682CDD25060058B8CF /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4483BB642CDD25060058B8CF /* Montserrat-SemiBold.ttf */; };
 		4483BB6A2CDD25060058B8CF /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4483BB662CDD25060058B8CF /* Montserrat-Medium.ttf */; };
 		4483BB6E2CDD285A0058B8CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4483BB6C2CDD285A0058B8CF /* Localizable.strings */; };
 		4483BB712CDD32F50058B8CF /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4483BB702CDD32F50058B8CF /* FloatingButton.swift */; };
-		4483BB752CDD3D3D0058B8CF /* OnProgressTodoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4483BB742CDD3D3D0058B8CF /* OnProgressTodoCard.swift */; };
+		4483BB752CDD3D3D0058B8CF /* TodoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4483BB742CDD3D3D0058B8CF /* TodoCard.swift */; };
 		44BB090B2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB090A2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift */; };
 		44BB090D2CD3FA120059EE0D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB090C2CD3FA120059EE0D /* WelcomeView.swift */; };
 		44BB090F2CD3FA130059EE0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44BB090E2CD3FA130059EE0D /* Assets.xcassets */; };
@@ -62,7 +61,6 @@
 		445D575D2CE0D84800A622E3 /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
 		445D57612CE0D8FF00A622E3 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		445D57652CE0E3BE00A622E3 /* CategoryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCard.swift; sourceTree = "<group>"; };
-		446A0B6C2CDFB9EE000138FD /* CompletedTodoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTodoCard.swift; sourceTree = "<group>"; };
 		446A0B6F2CDFBAA9000138FD /* Formatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Extension.swift"; sourceTree = "<group>"; };
 		4483BB632CDD25060058B8CF /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		4483BB642CDD25060058B8CF /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -70,7 +68,7 @@
 		4483BB6D2CDD285A0058B8CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4483BB6F2CDD28E90058B8CF /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4483BB702CDD32F50058B8CF /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
-		4483BB742CDD3D3D0058B8CF /* OnProgressTodoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnProgressTodoCard.swift; sourceTree = "<group>"; };
+		4483BB742CDD3D3D0058B8CF /* TodoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCard.swift; sourceTree = "<group>"; };
 		44BB09072CD3FA120059EE0D /* MVVMToDoSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMToDoSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44BB090A2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMToDoSwiftUIApp.swift; sourceTree = "<group>"; };
 		44BB090C2CD3FA120059EE0D /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -141,8 +139,7 @@
 		4483BB732CDD3D310058B8CF /* Cards */ = {
 			isa = PBXGroup;
 			children = (
-				4483BB742CDD3D3D0058B8CF /* OnProgressTodoCard.swift */,
-				446A0B6C2CDFB9EE000138FD /* CompletedTodoCard.swift */,
+				4483BB742CDD3D3D0058B8CF /* TodoCard.swift */,
 				445D57652CE0E3BE00A622E3 /* CategoryCard.swift */,
 			);
 			path = Cards;
@@ -446,13 +443,12 @@
 				445D575E2CE0D84800A622E3 /* AddCategoryView.swift in Sources */,
 				445D57662CE0E3BE00A622E3 /* CategoryCard.swift in Sources */,
 				44BB090D2CD3FA120059EE0D /* WelcomeView.swift in Sources */,
-				4483BB752CDD3D3D0058B8CF /* OnProgressTodoCard.swift in Sources */,
+				4483BB752CDD3D3D0058B8CF /* TodoCard.swift in Sources */,
 				44BB090B2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift in Sources */,
 				44BB09532CD40E480059EE0D /* Color+Extension.swift in Sources */,
 				44CAF03F2CD69A4D008AACCC /* Category.swift in Sources */,
 				446A0B702CDFBAA9000138FD /* Formatter+Extension.swift in Sources */,
 				445D57622CE0D8FF00A622E3 /* CategoryViewModel.swift in Sources */,
-				446A0B6D2CDFB9EE000138FD /* CompletedTodoCard.swift in Sources */,
 				44CAF0392CD67A4E008AACCC /* TodoView.swift in Sources */,
 				4483BB712CDD32F50058B8CF /* FloatingButton.swift in Sources */,
 				44CAF03D2CD69A46008AACCC /* TodoItem.swift in Sources */,

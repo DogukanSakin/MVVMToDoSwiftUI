@@ -21,6 +21,10 @@
 "add_new_todo" = "Todo Ekle";
 "add_new_category" = "Kategori Ekle";
 
+// MARK: - Category Card
+
+"category_tasks" = "%d Görev";
+
 // MARK: - Form Common
 
 "preview" = "Önizleme";

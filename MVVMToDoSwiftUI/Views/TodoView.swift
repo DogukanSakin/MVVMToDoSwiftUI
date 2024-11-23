@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct TodoView: View {
-    @EnvironmentObject var categoryViewModel: CategoryViewModel
-    @EnvironmentObject var todoViewModel: TodoViewModel
+    @StateObject private var todoViewModel = TodoViewModel()
+    @StateObject private var categoryViewModel = CategoryViewModel()
     
     @State private var showingPlusSheet = false
     
@@ -22,14 +22,14 @@ struct TodoView: View {
             ScrollView(showsIndicators: false) {
                 
                 VStack{
-                    Header().padding()
+                    Header().padding().environmentObject(todoViewModel)
                     
                     // MARK: - On Progress List
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(todoViewModel.onProgressTodos.indices, id: \.self) {  index in
-                                OnProgressTodoCard(todo: todoViewModel.onProgressTodos[index])
+                                TodoCard(todo: todoViewModel.onProgressTodos[index])
                                     .padding(.leading, index == 0 ? 16 : 0)
                                     .padding(.trailing, index == todoViewModel.onProgressTodos.count - 1 ? 16 : 0)
                                     .padding(.horizontal, (index != 0 && index != todoViewModel.onProgressTodos.count - 1) ? 4 : 0)
@@ -58,8 +58,9 @@ struct TodoView: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(categoryViewModel.categories, id: \.id){ category in
-                                    CategoryCard(category: category)
+                                ForEach(categoryViewModel.categories.indices, id: \.self){ index in
+                                    CategoryCard(category: categoryViewModel.categories[index])
+                                        .padding(.horizontal, (index != 0 && index != todoViewModel.onProgressTodos.count - 1) ? 4 : 0)
                                 }
                             }.padding(.horizontal)
                         }
@@ -78,18 +79,14 @@ struct TodoView: View {
                             Text(String(localized: "view_more"))
                                 .font(.system(size: 14, weight: .regular))
                         }
-                        
-                        
                     }
                     .padding([.top, .horizontal])
                     
-                    ScrollView( showsIndicators: false) {
+                    ScrollView(showsIndicators: false) {
                         ForEach(todoViewModel.onProgressTodos, id: \.id) { todo in
-                            VStack(alignment:.leading){
-                                CompletedTodoCard(todo: todo)
-                                
+                            VStack{
+                                TodoCard(todo: todo,width:.infinity)
                             }
-                            
                         }
                         
                     }

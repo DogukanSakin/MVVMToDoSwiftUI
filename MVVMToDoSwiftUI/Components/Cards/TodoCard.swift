@@ -2,6 +2,7 @@ import SwiftUI
 
 struct TodoCard: View {
     let todo: TodoItem
+    var width: CGFloat = 300
     
     // MARK: - Render
     
@@ -67,7 +68,7 @@ struct TodoCard: View {
                 Spacer()
             }
         }
-        .frame(width: 300, height: 120)
+        .frame(width: width, height: 120)
         .clipShape(RoundedRectangle(cornerRadius: 15))
         
     }

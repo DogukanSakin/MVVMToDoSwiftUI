@@ -55,7 +55,7 @@ struct AddCategoryView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.vertical)
                 
-                CategoryCard(category: viewModel.newCategory,width:UIScreen.main.bounds.width - 32)
+                CategoryCard(category: viewModel.newCategory)
                 
                 Spacer()
                 

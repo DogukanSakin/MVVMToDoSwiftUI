@@ -21,6 +21,10 @@
 "add_new_todo" = "Add Todo";
 "add_new_category" = "Add Category";
 
+// MARK: - Category Card
+
+"category_tasks" = "%d Tasks";
+
 // MARK: - Form Common
 
 "preview" = "Preview";
