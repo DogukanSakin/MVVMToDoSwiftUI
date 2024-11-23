@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct OnProgressTodoCard: View {
+struct TodoCard: View {
     let todo: TodoItem
     
     // MARK: - Render
@@ -16,7 +16,7 @@ struct OnProgressTodoCard: View {
                         Text(todo.title)
                             .font(.semiBold(size: 16))
                             .lineLimit(1)
-     
+                        
                         if todo.description != nil {
                             Text(todo.description!)
                                 .font(.regular(size: 12))
@@ -34,7 +34,6 @@ struct OnProgressTodoCard: View {
                 Spacer()
                 
                 HStack{
-                    
                     HStack {
                         Image(systemName: "clock.fill")
                             .foregroundColor(.gray)
@@ -47,23 +46,25 @@ struct OnProgressTodoCard: View {
                     }
                     
                     Spacer()
+                    
+                    if todo.category != nil {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(todo.category!.color.opacity(0.1))
+                            .frame(width:60,height: 20)
+                            .overlay(RoundedRectangle(cornerRadius: 10)
+                                .stroke(todo.category!.color,lineWidth: 1)
+                                .overlay(
+                                    Text(todo.category!.name)
+                                        .font(.medium(size: 10))
+                                        .foregroundStyle(todo.category!.color)
+                                ))
+                    }
                 }
                 
             }.padding()
             
-            
             VStack {
                 Spacer()
-                
-                if let todoCategory = todo.category {
-                    Rectangle()
-                        .fill(todoCategory.color)
-                        .frame(height: 6)
-                        .frame(maxWidth: .infinity)
-                }
-                
-               
-                
             }
         }
         .frame(width: 300, height: 120)
@@ -77,6 +78,6 @@ struct OnProgressTodoCard: View {
     ZStack{
         Color.background.edgesIgnoringSafeArea(.all)
         
-        OnProgressTodoCard(todo: TodoItem(id: UUID(), title: "Test", date: .now, description: "Lorem ipsum", category: categoryWork))
+        TodoCard(todo: TodoItem(id: UUID(), title: "Test", date: .now, description: "Lorem ipsum", category: categoryWork))
     }
 }
