@@ -36,6 +36,7 @@
 		44CAF03B2CD68719008AACCC /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CAF03A2CD68719008AACCC /* TodoViewModel.swift */; };
 		44CAF03D2CD69A46008AACCC /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CAF03C2CD69A46008AACCC /* TodoItem.swift */; };
 		44CAF03F2CD69A4D008AACCC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CAF03E2CD69A4D008AACCC /* Category.swift */; };
+		44F8BEE12CF650CE00CD9976 /* AppInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F8BEE02CF650CE00CD9976 /* AppInput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		44CAF03A2CD68719008AACCC /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
 		44CAF03C2CD69A46008AACCC /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		44CAF03E2CD69A4D008AACCC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		44F8BEE02CF650CE00CD9976 /* AppInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				44CAF0362CD676EF008AACCC /* AppButton.swift */,
 				4483BB702CDD32F50058B8CF /* FloatingButton.swift */,
 				445D57592CE0D44700A622E3 /* TabButton.swift */,
+				44F8BEE02CF650CE00CD9976 /* AppInput.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				44CAF03B2CD68719008AACCC /* TodoViewModel.swift in Sources */,
 				445D575E2CE0D84800A622E3 /* AddCategoryView.swift in Sources */,
 				445D57662CE0E3BE00A622E3 /* CategoryCard.swift in Sources */,
+				44F8BEE12CF650CE00CD9976 /* AppInput.swift in Sources */,
 				44BB090D2CD3FA120059EE0D /* WelcomeView.swift in Sources */,
 				4483BB752CDD3D3D0058B8CF /* TodoCard.swift in Sources */,
 				44BB090B2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift in Sources */,

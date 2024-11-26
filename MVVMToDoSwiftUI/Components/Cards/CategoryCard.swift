@@ -13,7 +13,7 @@ struct CategoryCard: View {
     
     var body: some View {
         ZStack{
-            LinearGradient(gradient: Gradient(colors: [category.color.opacity(0.4),category.color.opacity(0.6) ,category.color.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: [category.containerColor.opacity(0.4),category.containerColor.opacity(0.6) ,category.containerColor.opacity(0.8)]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             
             ZStack{
@@ -39,6 +39,7 @@ struct CategoryCard: View {
                 Text(category.name)
                     .font(.semiBold(size: 16))
                     .multilineTextAlignment(.center)
+                    .foregroundStyle(category.labelColor)
                     
                 Spacer()
                 
@@ -72,6 +73,6 @@ struct CategoryCard: View {
 #Preview {
     ZStack{
         Color.background.edgesIgnoringSafeArea(.all)
-        CategoryCard(category: .init(id: UUID(), name: "CategoryCategoryCategoryCategory", color: .yellow,todoItems: []))
+        CategoryCard(category: .init(id: UUID(), name: "CategoryCategoryCategoryCategory", containerColor: .yellow,todoItems: []))
     }
 }

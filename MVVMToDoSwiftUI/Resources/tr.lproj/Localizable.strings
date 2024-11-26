@@ -33,6 +33,14 @@
 
 "category_name" = "Kategori Adı";
 "category_color" = "Kategori Rengi";
+"label_color" = "Yazı Rengi";
+
+// MARK: - Add Todo Form
+
+"todo_title" = "Başlık";
+"todo_description" = "Açıklama (Opsiyonel)";
+"todo_date" = "Tarih";
+"todo_category" = "Kategori seçimi (Opsiyonel)";
 
 // MARK: - Add Category Form Validations
 

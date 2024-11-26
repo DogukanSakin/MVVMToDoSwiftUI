@@ -33,6 +33,15 @@
 
 "category_name" = "Category Name";
 "category_color" = "Category Color";
+"label_color" = "Label Color";
+
+// MARK: - Add Todo Form
+
+"todo_title" = "Title";
+"todo_description" = "Description (Optional)";
+"todo_date" = "Date";
+"todo_category" = "Select a category (Optional)";
+
 
 // MARK: - Add Category Form Validations
 

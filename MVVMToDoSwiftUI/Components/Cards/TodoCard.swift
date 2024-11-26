@@ -50,14 +50,14 @@ struct TodoCard: View {
                     
                     if todo.category != nil {
                         RoundedRectangle(cornerRadius: 10)
-                            .fill(todo.category!.color.opacity(0.1))
+                            .fill(todo.category!.containerColor.opacity(0.1))
                             .frame(width:60,height: 20)
                             .overlay(RoundedRectangle(cornerRadius: 10)
-                                .stroke(todo.category!.color,lineWidth: 1)
+                                .stroke(todo.category!.containerColor,lineWidth: 1)
                                 .overlay(
                                     Text(todo.category!.name)
                                         .font(.medium(size: 10))
-                                        .foregroundStyle(todo.category!.color)
+                                        .foregroundStyle(todo.category!.containerColor)
                                 ))
                     }
                 }

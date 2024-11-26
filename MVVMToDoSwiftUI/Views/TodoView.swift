@@ -85,7 +85,7 @@ struct TodoView: View {
                     ScrollView(showsIndicators: false) {
                         ForEach(todoViewModel.onProgressTodos, id: \.id) { todo in
                             VStack{
-                                TodoCard(todo: todo,width:.infinity)
+                                TodoCard(todo: todo,width: UIScreen.main.bounds.width - 32)
                             }
                         }
                         
@@ -104,7 +104,9 @@ struct TodoView: View {
             .padding()
     
         }.sheet(isPresented: $showingPlusSheet) {
-            PlusSheetView().environmentObject(categoryViewModel)
+            PlusSheetView(isPresentShowing: $showingPlusSheet)
+                .environmentObject(categoryViewModel)
+                .environmentObject(todoViewModel)
         }
     }
 }
@@ -154,6 +156,7 @@ struct Header: View {
 
 struct PlusSheetView: View {
     @State private var selectedTab = 0
+    @Binding var isPresentShowing: Bool
     
     var body: some View {
         ZStack {
@@ -175,9 +178,9 @@ struct PlusSheetView: View {
                 Divider()
                 
                 TabView(selection: $selectedTab){
-                    AddTodoView().tag(0)
+                    AddTodoView(isPresentShowing: $isPresentShowing).tag(0)
                     
-                    AddCategoryView().tag(1)
+                    AddCategoryView(isPresentShowing: $isPresentShowing).tag(1)
                 }
                 
                 Spacer()

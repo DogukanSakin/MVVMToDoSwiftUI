@@ -9,77 +9,89 @@ import SwiftUI
 
 struct AddCategoryView: View {
     @EnvironmentObject var viewModel: CategoryViewModel
-   
+    @Binding var isPresentShowing:Bool
+    
+    @State var isShowAlert:Bool = false
+    @State var alertMessage:String = ""
+    
     var body: some View {
-        ZStack{
-            Color(.systemGray6)
-                .ignoresSafeArea()
-            
-            VStack(spacing: 24) {
+        GeometryReader {_ in
+            ZStack{
+                Color(.systemGray6)
+                    .ignoresSafeArea()
                 
-                VStack(alignment: .leading){
-                    Text(String(localized: "category_name"))
-                        .font(.headline)
-                        .foregroundColor(.gray)
-                        .padding(.bottom,8)
-                    
-                    TextField("", text: Binding(
+                VStack(spacing: 24) {
+                    AppInput(placeholderLocalizedValue: "category_name", text: Binding(
                         get:{viewModel.newCategory.name},
                         set:{viewModel.newCategory.name = $0}
                     ))
-                        .textFieldStyle(PlainTextFieldStyle())
-                        .padding(10)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
                     
-                }
-                
-                HStack {
-                    Text(String(localized: "category_color"))
+                    HStack {
+                        Text(String(localized: "category_color"))
+                            .font(.headline)
+                            .foregroundColor(.gray)
+                        
+                        
+                        ColorPicker("", selection: Binding(
+                            get:{viewModel.newCategory.containerColor},
+                            set:{viewModel.newCategory.containerColor = $0}
+                        ))
+                        .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
+                        
+                    }.padding(.top)
+                    
+                    HStack {
+                        Text(String(localized: "label_color"))
+                            .font(.headline)
+                            .foregroundColor(.gray)
+                        
+                        
+                        ColorPicker("", selection: Binding(
+                            get:{viewModel.newCategory.labelColor},
+                            set:{viewModel.newCategory.labelColor = $0}
+                        ))
+                        .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
+                        
+                    }.padding(.top)
+                    
+                    Text(String(localized: "preview"))
                         .font(.headline)
                         .foregroundColor(.gray)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.vertical)
+                    
+                    CategoryCard(category: viewModel.newCategory)
+                    
+                    Spacer()
+                    
+                    AppButton(label: String(localized: "add_new_category"),action:{
+                        do {
+                            try viewModel.addCategory()
+                            isPresentShowing = false
+                        } catch let error as CategoryFormValidationError{
+                            alertMessage = error.errorDescription
+                            isShowAlert = true
+                        }
+                        catch{ }
+                    } ).padding(.top)
+                        .alert(alertMessage, isPresented: $isShowAlert) {
+                            Button("OK", role: .cancel) { }
+                        }
                     
                     
-                    ColorPicker("", selection: Binding(
-                        get:{viewModel.newCategory.color},
-                        set:{viewModel.newCategory.color = $0}
-                    ))
-                        .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
                     
-                }.padding(.top)
-
-                Text(String(localized: "preview"))
-                    .font(.headline)
-                    .foregroundColor(.gray)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.vertical)
+                }
+                .padding()
                 
-                CategoryCard(category: viewModel.newCategory)
-                
-                Spacer()
-                
-                AppButton(label: String(localized: "add_new_category"),action:{
-                    do {
-                        try viewModel.addCategory()
-                        
-                    } catch {
-                        print(error)
-                    }
-                } ).padding(.top)
-                
-                
-                
-            }.padding()
-            
-            
-            
+            }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }
 
 #Preview {
-    AddCategoryView().environmentObject(CategoryViewModel())
+    AddCategoryView(isPresentShowing:.constant(true)).environmentObject(CategoryViewModel())
 }
 
 

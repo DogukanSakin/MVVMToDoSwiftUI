@@ -8,6 +8,8 @@
 import Foundation
 
 class TodoViewModel:ObservableObject{
+    @Published var newTodo = TodoItem(id: UUID(), title: "", date: .now)
+    
     @Published var onProgressTodos: [TodoItem] = [
         TodoItem(id: UUID(), title: "Complete SwiftUI tutorial",date: .now, category: categoryWork),
         TodoItem(id: UUID(), title: "Buy groceries", date: .now,category: categoryShopping),
@@ -19,4 +21,6 @@ class TodoViewModel:ObservableObject{
         TodoItem(id: UUID(), title: "Buy groceries", date: .now,category: categoryShopping),
         TodoItem(id: UUID(), title: "Finish reading book", date: .now,category: categoryPersonal)
     ]
+    
+    
 }
