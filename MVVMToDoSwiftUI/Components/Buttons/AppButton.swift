@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct AppButton: View {
+    // MARK: - Props
+
     var label: String = ""
     var color: Color = .button
     var labelSize: CGFloat = 16
     var action: () -> Void = {}
-    
+
     var body: some View {
         Button(action: action, label: {
             Text(label)
@@ -23,10 +25,9 @@ struct AppButton: View {
         .background(color)
         .clipShape(.capsule)
         .foregroundColor(.white)
-        
     }
 }
 
 #Preview {
-    AppButton(label: "App Button"){}
+    AppButton(label: "App Button") {}
 }

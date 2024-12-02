@@ -34,6 +34,8 @@
 "category_name" = "Kategori Adı";
 "category_color" = "Kategori Rengi";
 "label_color" = "Yazı Rengi";
+"empty_category_name" = "Kategori adı boş bırakılamaz.";
+"already_added_category_name" = "Bu renkte ve kategori adında daha önce bir kategori mevcut.";
 
 // MARK: - Add Todo Form
 
@@ -41,8 +43,7 @@
 "todo_description" = "Açıklama (Opsiyonel)";
 "todo_date" = "Tarih";
 "todo_category" = "Kategori seçimi (Opsiyonel)";
+"empty_todo_title" = "Yapılacak adı boş bırakılamaz.";
 
-// MARK: - Add Category Form Validations
 
-"empty_category_name" = "Kategori adı boş bırakılamaz.";
-"already_added_category_name" = "Bu renkte ve kategori adında daha önce bir kategori mevcut.";
+

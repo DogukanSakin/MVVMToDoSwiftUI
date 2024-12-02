@@ -8,18 +8,22 @@
 import SwiftUI
 
 struct AppInput: View {
-    var placeholderLocalizedValue:String.LocalizationValue = ""
-    var isTextArea:Bool = false
-    
+    // MARK: - Props
+
+    var placeholderLocalizedValue: String.LocalizationValue = ""
+    var isTextArea: Bool = false
+
+    // MARK: - Bindings
+
     @Binding var text: String
-    
+
     var body: some View {
-        VStack(alignment: .leading){
+        VStack(alignment: .leading) {
             Text(String(localized: placeholderLocalizedValue))
                 .font(.headline)
                 .foregroundColor(.gray)
-                .padding(.bottom,8)
-            
+                .padding(.bottom, 8)
+
             if isTextArea {
                 TextEditor(text: $text)
                     .frame(height: 140)
@@ -35,12 +39,10 @@ struct AppInput: View {
                     .cornerRadius(16)
                     .overlay(RoundedRectangle(cornerRadius: 16).stroke(.gray))
             }
-            
-            
         }
     }
 }
 
 #Preview {
-    AppInput(isTextArea: true,text: .constant("Test"))
+    AppInput(isTextArea: true, text: .constant("Test"))
 }

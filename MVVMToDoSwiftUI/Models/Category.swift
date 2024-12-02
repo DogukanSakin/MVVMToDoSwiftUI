@@ -16,7 +16,6 @@ struct Category: Identifiable {
     var todoItems: [TodoItem]?
 }
 
-
-let categoryWork = Category(id: UUID(), name: "Work",containerColor: .red, todoItems: [])
+let categoryWork = Category(id: UUID(), name: "Work", containerColor: .red, todoItems: [])
 let categoryPersonal = Category(id: UUID(), name: "Personal", containerColor: .blue, todoItems: [])
 let categoryShopping = Category(id: UUID(), name: "Shopping", containerColor: .green, todoItems: [])

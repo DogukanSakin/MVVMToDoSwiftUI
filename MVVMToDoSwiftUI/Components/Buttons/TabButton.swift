@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - Custom Button Style
+
 struct NoOpacityButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -15,10 +17,12 @@ struct NoOpacityButtonStyle: ButtonStyle {
 }
 
 struct TabButton: View {
+    // MARK: - Props
+
     var label: String = ""
     var isSelected: Bool
     var action: () -> Void = {}
-    
+
     var body: some View {
         Button(action: action, label: {
             Text(label)
@@ -34,5 +38,5 @@ struct TabButton: View {
 }
 
 #Preview {
-    TabButton(label:"Tab Label",isSelected: true)
+    TabButton(label: "Tab Label", isSelected: true)
 }

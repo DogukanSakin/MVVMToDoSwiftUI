@@ -10,15 +10,14 @@ import SwiftUI
 @main
 struct MVVMToDoSwiftUIApp: App {
     let isFirstLaunch = false
-    
+
     var body: some Scene {
         WindowGroup {
             if isFirstLaunch {
                 WelcomeView()
-            }else{
+            } else {
                 TodoView()
             }
-          
         }
     }
 }
