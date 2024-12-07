@@ -12,3 +12,4 @@ extension Color {
     static let background = Color("PageBackground")
     static let buttonCircle = Color("IconButtonCircle")
 }
+

@@ -10,7 +10,7 @@ import SwiftUI
 struct AddCategoryView: View {
     // MARK: - Environment Objects
     
-    @EnvironmentObject var viewModel: CategoryViewModel
+    @Environment(CategoryViewModel.self) private var viewModel: CategoryViewModel
     
     // MARK: - Bindings
     
@@ -93,5 +93,5 @@ struct AddCategoryView: View {
 }
 
 #Preview {
-    AddCategoryView(isPresentShowing: .constant(true)).environmentObject(CategoryViewModel())
+    AddCategoryView(isPresentShowing: .constant(true)).environment(CategoryViewModel())
 }

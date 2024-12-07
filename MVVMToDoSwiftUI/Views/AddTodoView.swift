@@ -10,8 +10,8 @@ import SwiftUI
 struct AddTodoView: View {
     // MARK: - Environment Objects
 
-    @EnvironmentObject var todoViewModel: TodoViewModel
-    @EnvironmentObject var categoryViewModel: CategoryViewModel
+    @Environment(TodoViewModel.self) private var todoViewModel: TodoViewModel
+    @Environment(CategoryViewModel.self) private var categoryViewModel: CategoryViewModel
 
     // MARK: - Bindings
 
@@ -38,8 +38,8 @@ struct AddTodoView: View {
                         .padding([.top, .horizontal])
 
                         AppInput(placeholderLocalizedValue: "todo_description", isTextArea: true, text: Binding(
-                            get: { todoViewModel.newTodo.description ?? "" },
-                            set: { todoViewModel.newTodo.description = $0 }
+                            get: { todoViewModel.newTodo.comment ?? "" },
+                            set: { todoViewModel.newTodo.comment = $0 }
                         )).padding([.top, .horizontal])
 
                         DatePicker(selection: Binding(
@@ -109,6 +109,6 @@ struct AddTodoView: View {
 
 #Preview {
     AddTodoView(isPresentShowing: .constant(true))
-        .environmentObject(TodoViewModel())
-        .environmentObject(CategoryViewModel())
+        .environment(TodoViewModel())
+        .environment(CategoryViewModel())
 }

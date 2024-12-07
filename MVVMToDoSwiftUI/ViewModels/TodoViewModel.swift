@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import SwiftData
+import SwiftUI
 
 enum TodoFormValidationError: LocalizedError {
     case empty
@@ -17,23 +19,37 @@ enum TodoFormValidationError: LocalizedError {
     }
 }
 
-class TodoViewModel: ObservableObject {
-    @Published var newTodo = TodoItem(id: UUID(), title: "", date: .now)
-    
-    @Published var onProgressTodos: [TodoItem] = [
-        TodoItem(id: UUID(), title: "Complete SwiftUI tutorial", date: .now, category: categoryWork),
-        TodoItem(id: UUID(), title: "Buy groceries", date: .now, category: categoryShopping),
-        TodoItem(id: UUID(), title: "Finish reading book", date: .now, category: categoryPersonal),
-    ]
-    
-    @Published var completedTodos: [TodoItem] = [
-        TodoItem(id: UUID(), title: "Complete SwiftUI tutorial", date: .now, category: categoryWork),
-        TodoItem(id: UUID(), title: "Buy groceries", date: .now, category: categoryShopping),
-        TodoItem(id: UUID(), title: "Finish reading book", date: .now, category: categoryPersonal),
-    ]
+@Observable class TodoViewModel {
+    var modelContext: ModelContext?
+    var newTodo = TodoItem(id: UUID(), title: "", date: .now)
+    var onProgressTodos = [TodoItem]()
+    var completedTodos = [TodoItem]()
     
     func addTodo() throws {
         guard !newTodo.title.isEmpty else { throw TodoFormValidationError.empty }
-        onProgressTodos.append(newTodo)
+        modelContext?.insert(newTodo)
+        try? modelContext?.save()
+        fetchTodos()
+    }
+    
+    func fetchTodos() {
+        let onProgressFetchDescriptor = FetchDescriptor<TodoItem>(
+            predicate: #Predicate {
+                $0.isDone == false
+            }
+        )
+        
+        let completedFetchDescriptor = FetchDescriptor<TodoItem>(
+            predicate: #Predicate {
+                $0.isDone == true
+            }
+        )
+        
+        do {
+            onProgressTodos = try modelContext?.fetch(onProgressFetchDescriptor) ?? []
+            completedTodos = try modelContext?.fetch(completedFetchDescriptor) ?? []
+        } catch {
+            print("Error fetching todos: \(error.localizedDescription)")
+        }
     }
 }

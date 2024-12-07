@@ -5,6 +5,7 @@
 //  Created by Doğukan Sakin on 31.10.2024.
 //
 
+import SwiftData
 import SwiftUI
 
 @main
@@ -19,5 +20,7 @@ struct MVVMToDoSwiftUIApp: App {
                 TodoView()
             }
         }
+        .modelContainer(for: [TodoItem.self])
+        .modelContainer(for: [Category.self])
     }
 }

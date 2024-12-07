@@ -17,8 +17,8 @@ struct TodoCard: View {
                             .font(.semiBold(size: 16))
                             .lineLimit(1)
 
-                        if todo.description != nil {
-                            Text(todo.description!)
+                        if todo.comment != nil {
+                            Text(todo.comment!)
                                 .font(.regular(size: 12))
                                 .lineLimit(2)
                                 .foregroundStyle(.gray)
@@ -74,6 +74,6 @@ struct TodoCard: View {
     ZStack {
         Color.background.edgesIgnoringSafeArea(.all)
 
-        TodoCard(todo: TodoItem(id: UUID(), title: "Test", date: .now, description: "Lorem ipsum", category: categoryWork))
+        TodoCard(todo: TodoItem(id: UUID(), title: "Test", date: .now, comment: "Lorem ipsum", category: Category(id: UUID(), name: "Work", containerColor: .red, todoItems: [])))
     }
 }

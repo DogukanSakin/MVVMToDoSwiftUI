@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct TodoView: View {
-    @StateObject private var todoViewModel = TodoViewModel()
-    @StateObject private var categoryViewModel = CategoryViewModel()
+    @Environment(\.modelContext) var todoViewModelContext
+    @State private var todoViewModel = TodoViewModel()
+    @State private var categoryViewModel = CategoryViewModel()
 
     @State private var showingPlusSheet = false
 
@@ -20,10 +21,10 @@ struct TodoView: View {
 
             ScrollView(showsIndicators: false) {
                 VStack {
-                    Header().padding().environmentObject(todoViewModel)
+                    Header().padding().environment(todoViewModel)
 
                     // MARK: - On Progress List
-
+                    
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(todoViewModel.onProgressTodos.indices, id: \.self) { index in
@@ -79,7 +80,7 @@ struct TodoView: View {
                     .padding([.top, .horizontal])
 
                     ScrollView(showsIndicators: false) {
-                        ForEach(todoViewModel.onProgressTodos, id: \.id) { todo in
+                        ForEach(todoViewModel.completedTodos, id: \.id) { todo in
                             VStack {
                                 TodoCard(todo: todo, width: UIScreen.main.bounds.width - 32)
                             }
@@ -98,8 +99,11 @@ struct TodoView: View {
 
         }.sheet(isPresented: $showingPlusSheet) {
             PlusSheetView(isPresentShowing: $showingPlusSheet)
-                .environmentObject(categoryViewModel)
-                .environmentObject(todoViewModel)
+                .environment(categoryViewModel)
+                .environment(todoViewModel)
+        }.onAppear{
+            todoViewModel.modelContext = todoViewModelContext
+            todoViewModel.fetchTodos()
         }
     }
 }
@@ -107,7 +111,7 @@ struct TodoView: View {
 // MARK: - Header
 
 struct Header: View {
-    @EnvironmentObject var todoViewModel: TodoViewModel
+    @Environment(TodoViewModel.self) private var todoViewModel: TodoViewModel
 
     var body: some View {
         VStack {
@@ -183,5 +187,5 @@ struct PlusSheetView: View {
 }
 
 #Preview {
-    TodoView().environmentObject(CategoryViewModel()).environmentObject(TodoViewModel())
+    TodoView().environment(CategoryViewModel()).environment(TodoViewModel())
 }

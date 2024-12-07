@@ -20,13 +20,9 @@ enum CategoryFormValidationError: LocalizedError {
     }
 }
 
-class CategoryViewModel: ObservableObject {
-    @Published var newCategory: Category = .init(id: UUID(), name: "", containerColor: .red)
-    @Published var categories: [Category] = [
-        .init(id: UUID(), name: "Work", containerColor: .red),
-        .init(id: UUID(), name: "Home", containerColor: .blue),
-        .init(id: UUID(), name: "Personal", containerColor: .green),
-    ]
+@Observable class CategoryViewModel {
+    var newCategory: Category = .init(id: UUID(), name: "", containerColor: .red)
+    var categories: [Category] = []
 
     func addCategory() throws {
         guard !newCategory.name.isEmpty else { throw CategoryFormValidationError.empty }
