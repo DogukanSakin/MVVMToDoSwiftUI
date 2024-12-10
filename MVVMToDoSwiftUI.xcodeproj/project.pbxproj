@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44514D592D08CA1200AC4B3F /* MotivationalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44514D582D08CA0900AC4B3F /* MotivationalMessage.swift */; };
 		445D575A2CE0D44700A622E3 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D57592CE0D44700A622E3 /* TabButton.swift */; };
 		445D575C2CE0D84000A622E3 /* AddTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D575B2CE0D83F00A622E3 /* AddTodoView.swift */; };
 		445D575E2CE0D84800A622E3 /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D575D2CE0D84800A622E3 /* AddCategoryView.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		44514D582D08CA0900AC4B3F /* MotivationalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationalMessage.swift; sourceTree = "<group>"; };
 		445D57592CE0D44700A622E3 /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
 		445D575B2CE0D83F00A622E3 /* AddTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoView.swift; sourceTree = "<group>"; };
 		445D575D2CE0D84800A622E3 /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 		44BB09432CD3FEA00059EE0D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				44514D582D08CA0900AC4B3F /* MotivationalMessage.swift */,
 				44BB09442CD3FEAA0059EE0D /* Extensions */,
 			);
 			path = Utilities;
@@ -452,6 +455,7 @@
 				44BB090D2CD3FA120059EE0D /* WelcomeView.swift in Sources */,
 				4483BB752CDD3D3D0058B8CF /* TodoCard.swift in Sources */,
 				44BB090B2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift in Sources */,
+				44514D592D08CA1200AC4B3F /* MotivationalMessage.swift in Sources */,
 				44BB09532CD40E480059EE0D /* Color+Extension.swift in Sources */,
 				44CAF03F2CD69A4D008AACCC /* Category.swift in Sources */,
 				446A0B702CDFBAA9000138FD /* Formatter+Extension.swift in Sources */,

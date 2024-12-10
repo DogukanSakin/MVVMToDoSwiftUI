@@ -6,12 +6,12 @@
   
 */
 
-// MARK: - Welcome Page Translations
+// MARK: - Welcome Page
 
 "welcome" = "Welcome to Today!";
 "start" = "Let's Start";
 
-// MARK: - Todos Page Translations
+// MARK: - Todos Page
 
 "hello" = "Hello,";
 "tasks_waiting" = "On progress ( %d )";
@@ -20,6 +20,29 @@
 "view_more" = "View More";
 "add_new_todo" = "Add Todo";
 "add_new_category" = "Add Category";
+
+// MARK: - Todos Page Header Messages
+
+"start_your_day_message" = "A new day, new opportunities! Start working towards your goals!";
+"keep_going_message" = "Take one more step, you're getting closer to success!";
+"stay_on_track_message" = "Today is your day! Each task is a step closer to success!";
+"achieve_goals_message" = "Every task completed is a step toward a brighter future!";
+"end_of_day_message" = "Finish the day strong and be proud of everything you've achieved!";
+"never_stop_message" = "Keep going to achieve more, you're getting stronger with each step!";
+"finish_strong_message" = "Today could be the start of something great! Push through to the end!";
+"today_is_your_day_message" = "Today is a big opportunity for you! Focus on your goals!";
+"keep_moving_message" = "Don't think, just do! Success is waiting for you!";
+"stay_positive_message" = "Stay positive, every task brings you one step closer to your goals!";
+
+// MARK: - Popup Action Menu Commons
+
+"edit" = "Edit";
+"delete" = "Delete";
+
+// MARK: - Todo Item Popup Action Menu
+
+"mark_as_completed" = "Mark as completed";
+"mark_as_uncompleted" = "Mark as uncompleted";
 
 // MARK: - Category Card
 

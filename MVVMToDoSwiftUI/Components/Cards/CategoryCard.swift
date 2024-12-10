@@ -51,7 +51,7 @@ struct CategoryCard: View {
 
                         Text(String(format: NSLocalizedString("category_tasks", comment: ""), categoryTasks.count))
                             .font(.medium(size: 12))
-                            .foregroundStyle(.gray)
+                            .foregroundStyle(category.labelColor)
                     }
                 }
             }.padding()

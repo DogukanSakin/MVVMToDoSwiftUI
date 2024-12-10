@@ -6,12 +6,12 @@
   
 */
 
-// MARK: - Welcome Page Translations
+// MARK: - Welcome Page
 
 "welcome" = "Today'e hoş geldin!";
 "start" = "Başlayalım";
 
-// MARK: - Todos Page Translations
+// MARK: - Todos Page
 
 "hello" = "Merhaba,";
 "tasks_waiting" = "Devam eden ( %d )";
@@ -20,6 +20,29 @@
 "view_more" = "Hepsini Gör";
 "add_new_todo" = "Todo Ekle";
 "add_new_category" = "Kategori Ekle";
+
+// MARK: - Todos Page Header Messages
+
+"start_your_day_message" = "Yeni bir gün, yeni fırsatlar! Hedeflerine ulaşmaya başla!";
+"keep_going_message" = "Bir adım daha at, başarıya daha da yaklaşıyorsun!";
+"stay_on_track_message" = "Bugün senin günün! Her görev bir adım daha ileri!";
+"achieve_goals_message" = "Her tamamlanan görev, daha parlak bir geleceğe adım!";
+"end_of_day_message" = "Günü başarıyla tamamla, başardığın her şeyle gururlan!";
+"never_stop_message" = "Daha fazla başarmak için devam et, her adımda güçleniyorsun!";
+"finish_strong_message" = "Bugün, her şeyin başlangıcı olabilir! Sonuna kadar git!";
+"today_is_your_day_message" = "Bugün senin için büyük bir fırsat! Hedeflerine odaklan!";
+"keep_moving_message" = "Düşünme, sadece yap! Başarı seni bekliyor!";
+"stay_positive_message" = "Pozitif kal, her görev seni hedeflerine bir adım daha yaklaştırır!";
+
+// MARK: - Popup Action Menu Commons
+
+"edit" = "Düzenle";
+"delete" = "Sil";
+
+// MARK: - Todo Item Popup Action Menu
+
+"mark_as_completed" = "Tamamlandı olarak işaretle";
+"mark_as_uncompleted" = "Tamamlanmadı olarak işaretle";
 
 // MARK: - Category Card
 

@@ -38,6 +38,7 @@ struct WelcomeView: View {
                 VStack {
                     Image("WelcomeImage")
                         .resizable()
+                        .frame(width: 325, height: 325)
                         .aspectRatio(contentMode: .fit)
                         .padding()
 

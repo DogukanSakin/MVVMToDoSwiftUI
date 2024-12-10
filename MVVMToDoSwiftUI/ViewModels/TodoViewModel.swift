@@ -52,4 +52,23 @@ enum TodoFormValidationError: LocalizedError {
             print("Error fetching todos: \(error.localizedDescription)")
         }
     }
+    
+    func changeTodoCompleteStatus(todo: TodoItem) throws {
+        let completedTodo = todo
+        completedTodo.isDone = !todo.isDone
+        
+        if completedTodo.isDone {
+            completedTodos.insert(completedTodo, at: 0)
+            onProgressTodos.removeAll(where: { $0.id == todo.id })
+        } else {
+            onProgressTodos.insert(completedTodo, at: 0)
+            completedTodos.removeAll(where: { $0.id == todo.id })
+        }
+        
+        do {
+            try modelContext?.save()
+        } catch {
+            print("Error saving todo: \(error.localizedDescription)")
+        }
+    }
 }

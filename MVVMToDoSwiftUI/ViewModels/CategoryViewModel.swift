@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftData
 import SwiftUI
 
 enum CategoryFormValidationError: LocalizedError {
@@ -21,12 +22,26 @@ enum CategoryFormValidationError: LocalizedError {
 }
 
 @Observable class CategoryViewModel {
+    var modelContext: ModelContext?
     var newCategory: Category = .init(id: UUID(), name: "", containerColor: .red)
     var categories: [Category] = []
 
     func addCategory() throws {
         guard !newCategory.name.isEmpty else { throw CategoryFormValidationError.empty }
         guard !categories.contains(where: { $0.name == newCategory.name && $0.containerColor == newCategory.containerColor }) else { throw CategoryFormValidationError.alreadyAdded }
-        categories.append(newCategory)
+        modelContext?.insert(newCategory)
+        try? modelContext?.save()
+        fetchCategories()
+    }
+    
+    func fetchCategories() {
+        let fetchDescriptor = FetchDescriptor<Category>()
+        
+        do {
+            categories = try modelContext?.fetch(fetchDescriptor) ?? []
+            print(categories)
+        }catch {
+            print("Failed to load Movie model.")
+        }
     }
 }
