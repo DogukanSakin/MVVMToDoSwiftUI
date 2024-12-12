@@ -14,8 +14,8 @@
 // MARK: - Todos Page
 
 "hello" = "Merhaba,";
-"tasks_waiting" = "Devam eden ( %d )";
-"completed" = "Tamamlananlar ( %d )";
+"tasks_waiting" = "Devam eden";
+"completed" = "Tamamlananlar";
 "categories" = "Kategoriler";
 "view_more" = "Hepsini Gör";
 "add_new_todo" = "Todo Ekle";

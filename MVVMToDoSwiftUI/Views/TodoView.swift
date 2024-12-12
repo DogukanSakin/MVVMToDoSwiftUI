@@ -5,6 +5,7 @@
 //  Created by Doğukan Sakin on 2.11.2024.
 //
 
+import SwiftData
 import SwiftUI
 
 struct TodoView: View {
@@ -19,7 +20,7 @@ struct TodoView: View {
     @State private var todoViewModel = TodoViewModel()
     @State private var categoryViewModel = CategoryViewModel()
     @State private var showingPlusSheet = false
-    
+   
     // MARK: - Formatted Data Arrays
     
     var body: some View {
@@ -32,7 +33,10 @@ struct TodoView: View {
                     Header().padding().environment(todoViewModel)
                     
                     // MARK: - On Progress List
-
+                    
+                    SectionHeader(titleKey: "completed", count: todoViewModel.onProgressTodos.count)
+                        .padding(.bottom)
+                    
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(Array(todoViewModel.onProgressTodos).suffix(DATA_SLICE_SIZE).indices, id: \.self) { index in
@@ -54,23 +58,11 @@ struct TodoView: View {
                         }
                     }
                     
-                    
                     // MARK: - Categories List
                     
                     if !categoryViewModel.categories.isEmpty {
-                        HStack {
-                            Text(String(format: NSLocalizedString("categories", comment: ""), todoViewModel.completedTodos.count))
-                                .font(.system(size: 14, weight: .regular))
-                            
-                            Spacer()
-                            
-                            Button(action: {}) {
-                                Text(String(localized: "view_more"))
-                                    .font(.system(size: 14, weight: .regular))
-                            }
-                        }
-                        .padding([.top, .horizontal])
-                        
+                        SectionHeader(titleKey: "categories")
+                       
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
                                 ForEach(categoryViewModel.categories.indices, id: \.self) { index in
@@ -85,18 +77,7 @@ struct TodoView: View {
                     // MARK: - Completed List
                     
                     if !todoViewModel.completedTodos.isEmpty {
-                        HStack {
-                            Text(String(format: NSLocalizedString("completed", comment: ""), todoViewModel.completedTodos.count))
-                                .font(.system(size: 14, weight: .regular))
-                            
-                            Spacer()
-                            
-                            Button(action: {}) {
-                                Text(String(localized: "view_more"))
-                                    .font(.system(size: 14, weight: .regular))
-                            }
-                        }
-                        .padding([.top, .horizontal])
+                        SectionHeader(titleKey: "tasks_waiting", count: todoViewModel.completedTodos.count)
                         
                         ScrollView(showsIndicators: false) {
                             ForEach(Array(todoViewModel.completedTodos).suffix(DATA_SLICE_SIZE), id: \.id) { todo in
@@ -132,10 +113,12 @@ struct TodoView: View {
                 .environment(categoryViewModel)
                 .environment(todoViewModel)
         }.onAppear {
-            todoViewModel.modelContext = context
-            categoryViewModel.modelContext = context
-            todoViewModel.fetchTodos()
-            categoryViewModel.fetchCategories()
+            Task {
+                todoViewModel.modelContext = context
+                categoryViewModel.modelContext = context
+                todoViewModel.fetchTodos()
+                categoryViewModel.fetchCategories()
+            }
         }
     }
 }
@@ -209,7 +192,7 @@ struct Header: View {
                                 .animation(.easeInOut(duration: 1.0), value: progress)
                                 .rotationEffect(.degrees(-90))
                                
-                            Text(String("\(todoPercent)%"))
+                            Text(String("\(Int(todoPercent))%"))
                                 .font(.regular(size: 12))
                         }
                    
@@ -222,7 +205,7 @@ struct Header: View {
                     progress = CGFloat(todoPercent / 100)
                 }
             }
-            .onChange(of: todoPercent) {oldValue, newValue in
+            .onChange(of: todoPercent) { _, newValue in
                 withAnimation(.easeInOut(duration: 1.0)) {
                     progress = CGFloat(newValue / 100)
                 }
@@ -304,6 +287,43 @@ struct TodoItemContextMenu: View {
     }
 }
 
+// MARK: - Section Header
+
+struct SectionHeader: View {
+    var titleKey: String.LocalizationValue
+    var count: Int?
+    
+    var body: some View {
+        HStack {
+            Text(String(localized: titleKey))
+                .font(.system(size: 14, weight: .regular))
+            
+            if count != nil {
+                Circle()
+                    .foregroundStyle(Color.iconButtonCircle)
+                    .overlay {
+                        Text("\(count!)")
+                            .font(.medium(size: 12))
+                    }
+                    .frame(width: 18, height: 18)
+            }
+            
+            Spacer()
+            
+            Button(action: {}) {
+                Text(String(localized: "view_more"))
+                    .font(.system(size: 14, weight: .regular))
+            }
+        }
+        .padding([.top, .horizontal])
+    }
+}
+
 #Preview {
-    TodoView().environment(CategoryViewModel()).environment(TodoViewModel())
+    MainActor.assumeIsolated {
+        let preview = Preview(TodoItem.self, Category.self)
+        preview.addExamples(TodoItem.samples)
+        preview.addExamples(Category.samples)
+        return TodoView().modelContainer(preview.container)
+    }
 }

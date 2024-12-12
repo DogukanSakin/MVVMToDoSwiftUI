@@ -14,8 +14,8 @@
 // MARK: - Todos Page
 
 "hello" = "Hello,";
-"tasks_waiting" = "On progress ( %d )";
-"completed" = "Completed ( %d )";
+"tasks_waiting" = "On progress";
+"completed" = "Completed";
 "categories" = "Categories";
 "view_more" = "View More";
 "add_new_todo" = "Add Todo";

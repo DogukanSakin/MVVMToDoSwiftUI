@@ -12,7 +12,7 @@ import SwiftUI
 enum CategoryFormValidationError: LocalizedError {
     case empty
     case alreadyAdded
-
+    
     public var errorDescription: String {
         switch self {
         case .empty: String(localized: "empty_category_name")
@@ -24,8 +24,8 @@ enum CategoryFormValidationError: LocalizedError {
 @Observable class CategoryViewModel {
     var modelContext: ModelContext?
     var newCategory: Category = .init(id: UUID(), name: "", containerColor: .red)
-    var categories: [Category] = []
-
+    var categories = [Category]()
+    
     func addCategory() throws {
         guard !newCategory.name.isEmpty else { throw CategoryFormValidationError.empty }
         guard !categories.contains(where: { $0.name == newCategory.name && $0.containerColor == newCategory.containerColor }) else { throw CategoryFormValidationError.alreadyAdded }
@@ -39,9 +39,9 @@ enum CategoryFormValidationError: LocalizedError {
         
         do {
             categories = try modelContext?.fetch(fetchDescriptor) ?? []
-            print(categories)
-        }catch {
-            print("Failed to load Movie model.")
+        } catch {
+            
         }
     }
 }
+

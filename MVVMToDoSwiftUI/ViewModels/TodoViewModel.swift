@@ -11,7 +11,7 @@ import SwiftUI
 
 enum TodoFormValidationError: LocalizedError {
     case empty
-    
+
     public var errorDescription: String {
         switch self {
         case .empty: String(localized: "empty_category_name")
@@ -24,27 +24,27 @@ enum TodoFormValidationError: LocalizedError {
     var newTodo = TodoItem(id: UUID(), title: "", date: .now)
     var onProgressTodos = [TodoItem]()
     var completedTodos = [TodoItem]()
-    
+
     func addTodo() throws {
         guard !newTodo.title.isEmpty else { throw TodoFormValidationError.empty }
         modelContext?.insert(newTodo)
         try? modelContext?.save()
         fetchTodos()
     }
-    
+
     func fetchTodos() {
         let onProgressFetchDescriptor = FetchDescriptor<TodoItem>(
             predicate: #Predicate {
                 $0.isDone == false
             }
         )
-        
+
         let completedFetchDescriptor = FetchDescriptor<TodoItem>(
             predicate: #Predicate {
                 $0.isDone == true
             }
         )
-        
+
         do {
             onProgressTodos = try modelContext?.fetch(onProgressFetchDescriptor) ?? []
             completedTodos = try modelContext?.fetch(completedFetchDescriptor) ?? []
@@ -52,11 +52,11 @@ enum TodoFormValidationError: LocalizedError {
             print("Error fetching todos: \(error.localizedDescription)")
         }
     }
-    
+
     func changeTodoCompleteStatus(todo: TodoItem) throws {
         let completedTodo = todo
         completedTodo.isDone = !todo.isDone
-        
+
         if completedTodo.isDone {
             completedTodos.insert(completedTodo, at: 0)
             onProgressTodos.removeAll(where: { $0.id == todo.id })
@@ -64,7 +64,7 @@ enum TodoFormValidationError: LocalizedError {
             onProgressTodos.insert(completedTodo, at: 0)
             completedTodos.removeAll(where: { $0.id == todo.id })
         }
-        
+
         do {
             try modelContext?.save()
         } catch {
@@ -72,3 +72,4 @@ enum TodoFormValidationError: LocalizedError {
         }
     }
 }
+

@@ -20,7 +20,7 @@ struct MVVMToDoSwiftUIApp: App {
                 TodoView()
             }
         }
-        .modelContainer(for: [TodoItem.self])
-        .modelContainer(for: [Category.self])
+        .modelContainer(for: TodoItem.self)
+        .modelContainer(for: Category.self)
     }
 }
