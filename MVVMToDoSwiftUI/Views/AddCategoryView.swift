@@ -24,7 +24,7 @@ struct AddCategoryView: View {
     var body: some View {
         GeometryReader { _ in
             ZStack {
-                Color(.systemGray6)
+                Color.background
                     .ignoresSafeArea()
 
                 ScrollView(showsIndicators: false) {

@@ -7,7 +7,16 @@
 
 import SwiftUI
 
+// MARK: - Todo Form Action Type
+
+enum TodoFormActionType{
+    case edit
+    case add
+}
+
 struct TodoForm: View {
+   
+    
     // MARK: - Environment Objects
 
     @Environment(TodoViewModel.self) private var todoViewModel: TodoViewModel
@@ -16,35 +25,40 @@ struct TodoForm: View {
     // MARK: - Bindings
 
     @Binding var isPresentShowing: Bool
+    
+    // MARK: - Props
+    
+    var todo: TodoItem
+    var actionType: TodoFormActionType = .add
 
-    // MARK: - States
-
+    // MARK: - State
     @State private var selectedCategoryIndex: Int?
-    @State var isShowAlert: Bool = false
-    @State var alertMessage: String = ""
+    @State private var isShowAlert: Bool = false
+    @State private var alertMessage: String = ""
+    
 
     var body: some View {
         ZStack {
-            Color(.systemGray6)
+            Color.background
                 .ignoresSafeArea()
 
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 24) {
                     VStack(alignment: .leading) {
                         AppInput(placeholderLocalizedValue: "todo_title", text: Binding(
-                            get: { todoViewModel.newTodo.title },
-                            set: { todoViewModel.newTodo.title = $0 }
+                            get: { todo.title },
+                            set: { todo.title = $0 }
                         ))
                         .padding([.top, .horizontal])
 
                         AppInput(placeholderLocalizedValue: "todo_description", isTextArea: true, text: Binding(
-                            get: { todoViewModel.newTodo.comment ?? "" },
-                            set: { todoViewModel.newTodo.comment = $0 }
+                            get: { todo.comment ?? "" },
+                            set: { todo.comment = $0 }
                         )).padding([.top, .horizontal])
 
                         DatePicker(selection: Binding(
-                            get: { todoViewModel.newTodo.date },
-                            set: { todoViewModel.newTodo.date = $0 }
+                            get: { todo.date },
+                            set: { todo.date = $0 }
                         )) {
                             Text(String(localized: "todo_date"))
                                 .font(.headline)
@@ -65,10 +79,10 @@ struct TodoForm: View {
                                                 withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
                                                     if selectedCategoryIndex == index {
                                                         selectedCategoryIndex = nil
-                                                        todoViewModel.newTodo.category = nil
+                                                        todo.category = nil
                                                     } else {
                                                         selectedCategoryIndex = index
-                                                        todoViewModel.newTodo.category = categoryViewModel.categories[index]
+                                                        todo.category = categoryViewModel.categories[index]
                                                     }
                                                 }
                                             }
@@ -81,7 +95,7 @@ struct TodoForm: View {
                                             )
                                             .scaleEffect(selectedCategoryIndex == index ? 1.1 : 1)
                                             .padding(.leading, index == 0 ? 16 : 0)
-                                            .padding(.horizontal, (index != 0 && index != todoViewModel.onProgressTodos.count - 1) ? 8 : 0)
+                                            .padding(.horizontal, (index != 0 && index != categoryViewModel.categories.count - 1) ? 8 : 0)
                                             .padding(.vertical, 12)
                                     }
                                 }
@@ -91,11 +105,11 @@ struct TodoForm: View {
 
                         Spacer()
 
-                        AppButton(label: String(localized: "add_new_todo"), action: {
+                        AppButton(label: String(localized: actionType == .add ? "add_new_todo" : "save"), action: {
                             do {
-                                try todoViewModel.addTodo()
+                                try actionType == .add ? todoViewModel.addTodo() : todoViewModel.updateTodo(todo)
                                 isPresentShowing = false
-                            } catch let error as CategoryFormValidationError {
+                            } catch let error as TodoFormValidationError {
                                 alertMessage = error.errorDescription
                                 isShowAlert = true
                             } catch {}
@@ -103,12 +117,16 @@ struct TodoForm: View {
                     }
                 }
             }
+        }.onAppear {
+            if let categoryIndex = categoryViewModel.categories.firstIndex(where: { $0.id == todo.category?.id }) {
+                selectedCategoryIndex = categoryIndex
+            }
         }
     }
 }
 
 #Preview {
-    TodoForm(isPresentShowing: .constant(true))
+    TodoForm(isPresentShowing: .constant(true),todo:TodoViewModel().newTodo)
         .environment(TodoViewModel())
         .environment(CategoryViewModel())
 }

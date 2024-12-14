@@ -12,7 +12,7 @@
 		442B01B42D0B7481006875AC /* CategorySamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B01B32D0B747F006875AC /* CategorySamples.swift */; };
 		44514D592D08CA1200AC4B3F /* MotivationalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44514D582D08CA0900AC4B3F /* MotivationalMessage.swift */; };
 		445D575A2CE0D44700A622E3 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D57592CE0D44700A622E3 /* TabButton.swift */; };
-		445D575C2CE0D84000A622E3 /* AddTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D575B2CE0D83F00A622E3 /* AddTodoView.swift */; };
+		445D575C2CE0D84000A622E3 /* TodoForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D575B2CE0D83F00A622E3 /* TodoForm.swift */; };
 		445D575E2CE0D84800A622E3 /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D575D2CE0D84800A622E3 /* AddCategoryView.swift */; };
 		445D57622CE0D8FF00A622E3 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D57612CE0D8FF00A622E3 /* CategoryViewModel.swift */; };
 		445D57662CE0E3BE00A622E3 /* CategoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D57652CE0E3BE00A622E3 /* CategoryCard.swift */; };
@@ -67,7 +67,7 @@
 		442B01B32D0B747F006875AC /* CategorySamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySamples.swift; sourceTree = "<group>"; };
 		44514D582D08CA0900AC4B3F /* MotivationalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationalMessage.swift; sourceTree = "<group>"; };
 		445D57592CE0D44700A622E3 /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
-		445D575B2CE0D83F00A622E3 /* AddTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoView.swift; sourceTree = "<group>"; };
+		445D575B2CE0D83F00A622E3 /* TodoForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoForm.swift; sourceTree = "<group>"; };
 		445D575D2CE0D84800A622E3 /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
 		445D57612CE0D8FF00A622E3 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		445D57652CE0E3BE00A622E3 /* CategoryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCard.swift; sourceTree = "<group>"; };
@@ -278,7 +278,7 @@
 			children = (
 				44BB090C2CD3FA120059EE0D /* WelcomeView.swift */,
 				44CAF0382CD67A4E008AACCC /* TodoView.swift */,
-				445D575B2CE0D83F00A622E3 /* AddTodoView.swift */,
+				445D575B2CE0D83F00A622E3 /* TodoForm.swift */,
 				445D575D2CE0D84800A622E3 /* AddCategoryView.swift */,
 			);
 			path = Views;
@@ -478,7 +478,7 @@
 				44CAF0372CD676EF008AACCC /* AppButton.swift in Sources */,
 				4479B4412D0487F1006A3775 /* CodableColor.swift in Sources */,
 				445D575A2CE0D44700A622E3 /* TabButton.swift in Sources */,
-				445D575C2CE0D84000A622E3 /* AddTodoView.swift in Sources */,
+				445D575C2CE0D84000A622E3 /* TodoForm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

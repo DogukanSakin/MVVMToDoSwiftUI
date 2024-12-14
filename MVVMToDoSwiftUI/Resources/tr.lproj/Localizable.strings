@@ -20,6 +20,7 @@
 "view_more" = "Hepsini Gör";
 "add_new_todo" = "Todo Ekle";
 "add_new_category" = "Kategori Ekle";
+"empty_list" = "Yeni bir yapılacak ekleyerek gününü planlamaya başla!";
 
 // MARK: - Todos Page Header Messages
 
@@ -51,6 +52,7 @@
 // MARK: - Form Common
 
 "preview" = "Önizleme";
+"save" = "Kaydet";
 
 // MARK: - Add Category Form
 

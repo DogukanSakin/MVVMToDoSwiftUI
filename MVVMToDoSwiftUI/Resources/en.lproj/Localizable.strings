@@ -20,6 +20,7 @@
 "view_more" = "View More";
 "add_new_todo" = "Add Todo";
 "add_new_category" = "Add Category";
+"empty_list" = "Start planning your day by adding a new todo!";
 
 // MARK: - Todos Page Header Messages
 
@@ -51,6 +52,7 @@
 // MARK: - Form Common
 
 "preview" = "Preview";
+"save" = "Save";
 
 // MARK: - Add Category Form
 
