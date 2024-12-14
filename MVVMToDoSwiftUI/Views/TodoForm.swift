@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddTodoView: View {
+struct TodoForm: View {
     // MARK: - Environment Objects
 
     @Environment(TodoViewModel.self) private var todoViewModel: TodoViewModel
@@ -108,7 +108,7 @@ struct AddTodoView: View {
 }
 
 #Preview {
-    AddTodoView(isPresentShowing: .constant(true))
+    TodoForm(isPresentShowing: .constant(true))
         .environment(TodoViewModel())
         .environment(CategoryViewModel())
 }
