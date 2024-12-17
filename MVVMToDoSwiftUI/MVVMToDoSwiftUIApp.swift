@@ -10,7 +10,7 @@ import SwiftUI
 
 @main
 struct MVVMToDoSwiftUIApp: App {
-    let isFirstLaunch = false
+    @State private var isFirstLaunch: Bool = UserDefaults.standard.bool(forKey: "hasLaunchedBefore") == false
 
     var body: some Scene {
         WindowGroup {

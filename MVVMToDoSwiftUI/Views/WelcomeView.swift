@@ -9,8 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct WelcomeView: View {
-
-    
     // MARK: - States
     
     @State private var navigateToTodos = false
@@ -52,7 +50,7 @@ struct WelcomeView: View {
                         .padding(.top, 20)
                     
                     AppButton(label: String(localized: "start")) {
-                    
+                        UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
                         navigateToTodos = true
                     }
                     .padding()

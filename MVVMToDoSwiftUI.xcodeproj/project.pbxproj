@@ -24,7 +24,6 @@
 		4483BB6E2CDD285A0058B8CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4483BB6C2CDD285A0058B8CF /* Localizable.strings */; };
 		4483BB712CDD32F50058B8CF /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4483BB702CDD32F50058B8CF /* FloatingButton.swift */; };
 		4483BB752CDD3D3D0058B8CF /* TodoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4483BB742CDD3D3D0058B8CF /* TodoCard.swift */; };
-		44962D552D11FE54003572DB /* LaunchSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44962D542D11FE50003572DB /* LaunchSettings.swift */; };
 		44BB090B2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB090A2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift */; };
 		44BB090D2CD3FA120059EE0D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB090C2CD3FA120059EE0D /* WelcomeView.swift */; };
 		44BB090F2CD3FA130059EE0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44BB090E2CD3FA130059EE0D /* Assets.xcassets */; };
@@ -81,7 +80,6 @@
 		4483BB6F2CDD28E90058B8CF /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4483BB702CDD32F50058B8CF /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		4483BB742CDD3D3D0058B8CF /* TodoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCard.swift; sourceTree = "<group>"; };
-		44962D542D11FE50003572DB /* LaunchSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSettings.swift; sourceTree = "<group>"; };
 		44BB09072CD3FA120059EE0D /* MVVMToDoSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMToDoSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44BB090A2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMToDoSwiftUIApp.swift; sourceTree = "<group>"; };
 		44BB090C2CD3FA120059EE0D /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -269,7 +267,6 @@
 		44BB09472CD408EA0059EE0D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				44962D542D11FE50003572DB /* LaunchSettings.swift */,
 				44CAF03C2CD69A46008AACCC /* TodoItem.swift */,
 				44CAF03E2CD69A4D008AACCC /* Category.swift */,
 			);
@@ -477,7 +474,6 @@
 				445D57622CE0D8FF00A622E3 /* CategoryViewModel.swift in Sources */,
 				44CAF0392CD67A4E008AACCC /* TodoView.swift in Sources */,
 				4483BB712CDD32F50058B8CF /* FloatingButton.swift in Sources */,
-				44962D552D11FE54003572DB /* LaunchSettings.swift in Sources */,
 				44CAF03D2CD69A46008AACCC /* TodoItem.swift in Sources */,
 				44CAF0372CD676EF008AACCC /* AppButton.swift in Sources */,
 				4479B4412D0487F1006A3775 /* CodableColor.swift in Sources */,
