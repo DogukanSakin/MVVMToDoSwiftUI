@@ -29,6 +29,7 @@ enum TodoFormValidationError: LocalizedError {
     var newTodo = TodoItem(id: UUID(), title: "", date: .now)
     var onProgressTodos = [TodoItem]()
     var completedTodos = [TodoItem]()
+    var isLoading: Bool = false
     
     func addTodo() throws {
         guard !newTodo.title.isEmpty else { throw TodoFormValidationError.empty }
@@ -44,6 +45,8 @@ enum TodoFormValidationError: LocalizedError {
     }
     
     func fetchTodos() {
+        isLoading = true
+        
         let onProgressFetchDescriptor = FetchDescriptor<TodoItem>(
             predicate: #Predicate {
                 $0.isDone == false
@@ -61,17 +64,24 @@ enum TodoFormValidationError: LocalizedError {
         do {
             onProgressTodos = try modelContext?.fetch(onProgressFetchDescriptor) ?? []
             completedTodos = try modelContext?.fetch(completedFetchDescriptor) ?? []
+        
         } catch {
             print("Error fetching todos: \(error.localizedDescription)")
         }
+        
+        isLoading = false
     }
     
-    func deleteTodo(from list: inout [TodoItem], _ todo: TodoItem) {
+    func deleteTodo(from list: inout [TodoItem], _ todo: TodoItem) throws {
         guard let removeIndex = list.firstIndex(where:{$0.id == todo.id}) else {return}
         modelContext?.delete(todo)
         list.remove(at: removeIndex)
-        
-     
+        do{
+            try modelContext?.save()
+        }
+        catch{
+            
+        }
     }
     
     func changeTodoCompleteStatus(todo: TodoItem) throws {

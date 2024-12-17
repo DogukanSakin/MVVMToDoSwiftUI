@@ -10,6 +10,9 @@ import SwiftUI
 extension Color {
     static let button = Color("AppButton")
     static let background = Color("PageBackground")
-    static let buttonCircle = Color("IconButtonCircle")
+    static let circleColor = Color("CircleColor")
+    static let cardColor = Color("CardColor")
+    static let welcomePagePrimaryColor = Color("WelcomePagePrimary")
+    static let welcomePageSecondaryColor = Color("WelcomePageSecondary")
 }
 

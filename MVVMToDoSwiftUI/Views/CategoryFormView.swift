@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+// MARK: - Category Form Action Type
+
+enum CategoryFormActionType{
+    case edit
+    case add
+}
+
 struct CategoryFormView: View {
     // MARK: - Environment Objects
     
@@ -15,6 +22,11 @@ struct CategoryFormView: View {
     // MARK: - Bindings
     
     @Binding var isPresentShowing: Bool
+    
+    // MARK: - Props
+    
+    var category:Category
+    var actionType: CategoryFormActionType = .add
     
     // MARK: - States
 
@@ -30,8 +42,8 @@ struct CategoryFormView: View {
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 24) {
                         AppInput(placeholderLocalizedValue: "category_name", text: Binding(
-                            get: { viewModel.newCategory.name },
-                            set: { viewModel.newCategory.name = $0 }
+                            get: { category.name },
+                            set: { category.name = $0 }
                         ))
 
                         HStack {
@@ -40,8 +52,8 @@ struct CategoryFormView: View {
                                 .foregroundColor(.gray)
 
                             ColorPicker("", selection: Binding(
-                                get: { viewModel.newCategory.containerColor },
-                                set: { viewModel.newCategory.containerColor = $0 }
+                                get: { category.containerColor },
+                                set: { category.containerColor = $0 }
                             ))
                             .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
 
@@ -53,8 +65,8 @@ struct CategoryFormView: View {
                                 .foregroundColor(.gray)
 
                             ColorPicker("", selection: Binding(
-                                get: { viewModel.newCategory.labelColor },
-                                set: { viewModel.newCategory.labelColor = $0 }
+                                get: { category.labelColor },
+                                set: { category.labelColor = $0 }
                             ))
                             .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
 
@@ -66,13 +78,13 @@ struct CategoryFormView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.vertical)
 
-                        CategoryCard(category: viewModel.newCategory)
+                        CategoryCard(category: category)
 
                         Spacer()
 
-                        AppButton(label: String(localized: "add_new_category"), action: {
+                        AppButton(label: String(localized: actionType == .add ? "add_new_category" : "save"), action: {
                             do {
-                                try viewModel.addCategory()
+                                try actionType == .add ? viewModel.addCategory() : viewModel.updateCategory(category)
                                 isPresentShowing = false
                             } catch let error as CategoryFormValidationError {
                                 alertMessage = error.errorDescription
@@ -93,5 +105,5 @@ struct CategoryFormView: View {
 }
 
 #Preview {
-    CategoryFormView(isPresentShowing: .constant(true)).environment(CategoryViewModel())
+    CategoryFormView(isPresentShowing: .constant(true),category:CategoryViewModel().newCategory).environment(CategoryViewModel())
 }

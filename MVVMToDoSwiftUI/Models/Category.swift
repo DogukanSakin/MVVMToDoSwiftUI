@@ -10,7 +10,7 @@ import SwiftUI
 import SwiftData
 
 @Model
-class Category: Identifiable {
+final class Category: Identifiable {
     var id: UUID
     var name: String
     private var _containerColor: CodableColor

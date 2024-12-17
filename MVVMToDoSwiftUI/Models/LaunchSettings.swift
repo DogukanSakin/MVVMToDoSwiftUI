@@ -10,9 +10,11 @@ import SwiftData
 
 @Model
 final class LaunchSettings {
+    @Attribute(.unique) var id: String 
     var isFirstLaunch: Bool
-
-    init(isFirstLaunch: Bool = true) {
+    
+    init(id: String = UUID().uuidString, isFirstLaunch: Bool = true) {
+        self.id = id
         self.isFirstLaunch = isFirstLaunch
     }
 }

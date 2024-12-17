@@ -12,8 +12,8 @@
 		442B01B42D0B7481006875AC /* CategorySamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B01B32D0B747F006875AC /* CategorySamples.swift */; };
 		44514D592D08CA1200AC4B3F /* MotivationalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44514D582D08CA0900AC4B3F /* MotivationalMessage.swift */; };
 		445D575A2CE0D44700A622E3 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D57592CE0D44700A622E3 /* TabButton.swift */; };
-		445D575C2CE0D84000A622E3 /* TodoForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D575B2CE0D83F00A622E3 /* TodoForm.swift */; };
-		445D575E2CE0D84800A622E3 /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D575D2CE0D84800A622E3 /* AddCategoryView.swift */; };
+		445D575C2CE0D84000A622E3 /* TodoFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D575B2CE0D83F00A622E3 /* TodoFormView.swift */; };
+		445D575E2CE0D84800A622E3 /* CategoryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D575D2CE0D84800A622E3 /* CategoryFormView.swift */; };
 		445D57622CE0D8FF00A622E3 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D57612CE0D8FF00A622E3 /* CategoryViewModel.swift */; };
 		445D57662CE0E3BE00A622E3 /* CategoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D57652CE0E3BE00A622E3 /* CategoryCard.swift */; };
 		446A0B702CDFBAA9000138FD /* Formatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A0B6F2CDFBAA9000138FD /* Formatter+Extension.swift */; };
@@ -24,6 +24,7 @@
 		4483BB6E2CDD285A0058B8CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4483BB6C2CDD285A0058B8CF /* Localizable.strings */; };
 		4483BB712CDD32F50058B8CF /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4483BB702CDD32F50058B8CF /* FloatingButton.swift */; };
 		4483BB752CDD3D3D0058B8CF /* TodoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4483BB742CDD3D3D0058B8CF /* TodoCard.swift */; };
+		44962D552D11FE54003572DB /* LaunchSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44962D542D11FE50003572DB /* LaunchSettings.swift */; };
 		44BB090B2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB090A2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift */; };
 		44BB090D2CD3FA120059EE0D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB090C2CD3FA120059EE0D /* WelcomeView.swift */; };
 		44BB090F2CD3FA130059EE0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44BB090E2CD3FA130059EE0D /* Assets.xcassets */; };
@@ -67,8 +68,8 @@
 		442B01B32D0B747F006875AC /* CategorySamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySamples.swift; sourceTree = "<group>"; };
 		44514D582D08CA0900AC4B3F /* MotivationalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationalMessage.swift; sourceTree = "<group>"; };
 		445D57592CE0D44700A622E3 /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
-		445D575B2CE0D83F00A622E3 /* TodoForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoForm.swift; sourceTree = "<group>"; };
-		445D575D2CE0D84800A622E3 /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
+		445D575B2CE0D83F00A622E3 /* TodoFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoFormView.swift; sourceTree = "<group>"; };
+		445D575D2CE0D84800A622E3 /* CategoryFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFormView.swift; sourceTree = "<group>"; };
 		445D57612CE0D8FF00A622E3 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		445D57652CE0E3BE00A622E3 /* CategoryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCard.swift; sourceTree = "<group>"; };
 		446A0B6F2CDFBAA9000138FD /* Formatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Extension.swift"; sourceTree = "<group>"; };
@@ -80,6 +81,7 @@
 		4483BB6F2CDD28E90058B8CF /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4483BB702CDD32F50058B8CF /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		4483BB742CDD3D3D0058B8CF /* TodoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCard.swift; sourceTree = "<group>"; };
+		44962D542D11FE50003572DB /* LaunchSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSettings.swift; sourceTree = "<group>"; };
 		44BB09072CD3FA120059EE0D /* MVVMToDoSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMToDoSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44BB090A2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMToDoSwiftUIApp.swift; sourceTree = "<group>"; };
 		44BB090C2CD3FA120059EE0D /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 		44BB09472CD408EA0059EE0D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				44962D542D11FE50003572DB /* LaunchSettings.swift */,
 				44CAF03C2CD69A46008AACCC /* TodoItem.swift */,
 				44CAF03E2CD69A4D008AACCC /* Category.swift */,
 			);
@@ -278,8 +281,8 @@
 			children = (
 				44BB090C2CD3FA120059EE0D /* WelcomeView.swift */,
 				44CAF0382CD67A4E008AACCC /* TodoView.swift */,
-				445D575B2CE0D83F00A622E3 /* TodoForm.swift */,
-				445D575D2CE0D84800A622E3 /* AddCategoryView.swift */,
+				445D575B2CE0D83F00A622E3 /* TodoFormView.swift */,
+				445D575D2CE0D84800A622E3 /* CategoryFormView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -459,7 +462,7 @@
 				442B01B22D0B68B3006875AC /* PreviewContainer.swift in Sources */,
 				44BB09462CD3FEBA0059EE0D /* Font+Extensions.swift in Sources */,
 				44CAF03B2CD68719008AACCC /* TodoViewModel.swift in Sources */,
-				445D575E2CE0D84800A622E3 /* AddCategoryView.swift in Sources */,
+				445D575E2CE0D84800A622E3 /* CategoryFormView.swift in Sources */,
 				442B01B42D0B7481006875AC /* CategorySamples.swift in Sources */,
 				445D57662CE0E3BE00A622E3 /* CategoryCard.swift in Sources */,
 				44F8BEE12CF650CE00CD9976 /* AppInput.swift in Sources */,
@@ -474,11 +477,12 @@
 				445D57622CE0D8FF00A622E3 /* CategoryViewModel.swift in Sources */,
 				44CAF0392CD67A4E008AACCC /* TodoView.swift in Sources */,
 				4483BB712CDD32F50058B8CF /* FloatingButton.swift in Sources */,
+				44962D552D11FE54003572DB /* LaunchSettings.swift in Sources */,
 				44CAF03D2CD69A46008AACCC /* TodoItem.swift in Sources */,
 				44CAF0372CD676EF008AACCC /* AppButton.swift in Sources */,
 				4479B4412D0487F1006A3775 /* CodableColor.swift in Sources */,
 				445D575A2CE0D44700A622E3 /* TabButton.swift in Sources */,
-				445D575C2CE0D84000A622E3 /* TodoForm.swift in Sources */,
+				445D575C2CE0D84000A622E3 /* TodoFormView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -663,6 +667,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
@@ -694,6 +699,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;

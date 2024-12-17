@@ -15,6 +15,11 @@ struct TodoEditNavigationState {
     var isVisible: Bool
 }
 
+struct CategoryEditNavigationState {
+    var selectedCategory: Category?
+    var isVisible: Bool
+}
+
 struct TodoView: View {
     private let DATA_SLICE_SIZE: Int = 5
     
@@ -28,149 +33,174 @@ struct TodoView: View {
     @State private var categoryViewModel = CategoryViewModel()
     @State private var showingPlusSheet = false
     @State private var todoEditNavigation = TodoEditNavigationState(selectedTodo: nil, isVisible: false)
-
+    @State private var categoryEditNavigation = CategoryEditNavigationState(selectedCategory: nil, isVisible: false)
     
     // MARK: - Formatted Data Arrays
     
     var body: some View {
         NavigationStack {
-            ZStack(alignment: .bottomTrailing) {
-                Color.background
-                    .ignoresSafeArea(.all)
-                
-                ScrollView(showsIndicators: false) {
-                    VStack {
-                        Header().padding().environment(todoViewModel)
-                        
-                        // MARK: - On Progress List
-                        
-                        if !todoViewModel.onProgressTodos.isEmpty {
-                            SectionHeader(titleKey: "tasks_waiting", count: todoViewModel.onProgressTodos.count)
-                                .padding(.bottom)
+            // MARK: - Loading State
+            
+            if todoViewModel.isLoading || categoryViewModel.isLoading {
+                ZStack {
+                    Color.background
+                        .ignoresSafeArea(.all)
+                    
+                    Spacer()
+                    
+                    ProgressView()
+                    
+                    Spacer()
+                }
+               
+            } else {
+                ZStack(alignment: .bottomTrailing) {
+                    Color.background
+                        .ignoresSafeArea(.all)
+                    
+                    ScrollView(showsIndicators: false) {
+                        VStack {
+                            Header().padding(.horizontal).environment(todoViewModel)
                             
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack {
-                                    let todos = Array(todoViewModel.onProgressTodos.suffix(DATA_SLICE_SIZE))
-                                    
-                                    
-                                    ForEach(todos.indices, id: \.self) { index in
-                                        if index < todos.count {
-                                            TodoCard(todo: todos[index])
-                                                .padding(.leading, index == 0 ? 16 : 0)
-                                                .padding(.trailing, index == todos.count - 1 ? 16 : 0)
-                                                .padding(.horizontal, (index != 0 && index != todos.count - 1) ? 4 : 0)
+                            // MARK: - On Progress List
+                            
+                            if !todoViewModel.onProgressTodos.isEmpty {
+                                SectionHeader(titleKey: "tasks_waiting", count: todoViewModel.onProgressTodos.count)
+                                    .padding(.bottom)
+                                
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack {
+                                        let todos = Array(todoViewModel.onProgressTodos.suffix(DATA_SLICE_SIZE))
+                                        
+                                        ForEach(todos.indices, id: \.self) { index in
+                                            if index < todos.count {
+                                                TodoCard(todo: todos[index])
+                                                    .padding(.leading, index == 0 ? 16 : 0)
+                                                    .padding(.trailing, index == todos.count - 1 ? 16 : 0)
+                                                    .padding(.horizontal, (index != 0 && index != todos.count - 1) ? 4 : 0)
+                                                    .onTapGesture {
+                                                        withAnimation {
+                                                            do {
+                                                                try todoViewModel.changeTodoCompleteStatus(todo: todos[index])
+                                                            } catch {}
+                                                        }
+                                                    }
+                                                    .contextMenu {
+                                                        TodoItemContextMenu(selectedTodo: todos[index], listType: .onProgress, editNavigation: $todoEditNavigation).environment(todoViewModel)
+                                                    }
+                                            }
+                                        }
+                                    }
+                                }
+                            } else if todoViewModel.onProgressTodos.isEmpty, todoViewModel.completedTodos.isEmpty {
+                                Image("WelcomeImage")
+                                    .resizable()
+                                    .frame(width: 325, height: 325)
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding()
+                                
+                                Text(String(localized: "empty_list"))
+                                    .font(.regular(size: 14))
+                                    .padding(.top)
+                            }
+                            
+                            // MARK: - Categories List
+                            
+                            if !categoryViewModel.categories.isEmpty {
+                                SectionHeader(titleKey: "categories")
+                                
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack {
+                                        ForEach(categoryViewModel.categories.indices, id: \.self) { index in
+                                            if index < categoryViewModel.categories.count {
+                                                CategoryCard(category: categoryViewModel.categories[index])
+                                                    .padding(.horizontal, (index != 0 && index != categoryViewModel.categories.count - 1) ? 4 : 0)
+                                                    .contextMenu {
+                                                        Button {
+                                                            categoryEditNavigation.selectedCategory = categoryViewModel.categories[index]
+                                                            categoryEditNavigation.isVisible = true
+                                                        } label: {
+                                                            Label(String(localized: "edit"), systemImage: "pencil")
+                                                        }
+                                                        
+                                                        Button(role: .destructive) {
+                                                            withAnimation {
+                                                                do {
+                                                                    try categoryViewModel.deleteCategory(from: &categoryViewModel.categories, categoryViewModel.categories[index])
+                                                                } catch {}
+                                                            }
+                                                        } label: {
+                                                            Label(String(localized: "delete"), systemImage: "trash")
+                                                        }
+                                                    }
+                                            }
+                                        }
+                                    }.padding(.horizontal)
+                                }
+                                .padding(.vertical)
+                            }
+                            
+                            // MARK: - Completed List
+                            
+                            if !todoViewModel.completedTodos.isEmpty {
+                                SectionHeader(titleKey: "completed", count: todoViewModel.completedTodos.count)
+                                
+                                ScrollView(showsIndicators: false) {
+                                    ForEach(Array(todoViewModel.completedTodos).suffix(DATA_SLICE_SIZE), id: \.id) { todo in
+                                        VStack {
+                                            TodoCard(todo: todo, width: UIScreen.main.bounds.width - 32)
                                                 .onTapGesture {
                                                     withAnimation {
                                                         do {
-                                                            try todoViewModel.changeTodoCompleteStatus(todo: todos[index])
+                                                            try todoViewModel.changeTodoCompleteStatus(todo: todo)
                                                         } catch {}
                                                     }
                                                 }
                                                 .contextMenu {
-                                                    TodoItemContextMenu(selectedTodo: todos[index], listType: .onProgress, editNavigation: $todoEditNavigation).environment(todoViewModel)
+                                                    TodoItemContextMenu(selectedTodo: todo, listType: .completed, editNavigation: $todoEditNavigation).environment(todoViewModel)
                                                 }
                                         }
                                     }
-                                    
                                 }
-                            }
-                        } else if todoViewModel.onProgressTodos.isEmpty, todoViewModel.completedTodos.isEmpty {
-                            Image("WelcomeImage")
-                                .resizable()
-                                .frame(width: 325, height: 325)
-                                .aspectRatio(contentMode: .fit)
                                 .padding()
-                            
-                            Text(String(localized: "empty_list"))
-                                .font(.regular(size: 14))
-                                .padding(.top)
-                        }
-                        
-                        // MARK: - Categories List
-                        
-                        if !categoryViewModel.categories.isEmpty {
-                            SectionHeader(titleKey: "categories")
-                            
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack {
-                                    ForEach(categoryViewModel.categories.indices, id: \.self) { index in
-                                        CategoryCard(category: categoryViewModel.categories[index])
-                                            .padding(.horizontal, (index != 0 && index != categoryViewModel.categories.count - 1) ? 4 : 0)
-                                            .contextMenu {
-                                                Button {
-                                                    withAnimation {}
-                                                } label: {
-                                                    Label(String(localized: "edit"), systemImage: "pencil")
-                                                }
-                                                
-                                                Button(role: .destructive) {
-                                                    withAnimation {}
-                                                } label: {
-                                                    Label(String(localized: "delete"), systemImage: "trash")
-                                                }
-                                            }
-                                    }
-                                }.padding(.horizontal)
                             }
-                            .padding(.vertical)
-                        }
-                        
-                        // MARK: - Completed List
-                        
-                        if !todoViewModel.completedTodos.isEmpty {
-                            SectionHeader(titleKey: "completed", count: todoViewModel.completedTodos.count)
                             
-                            ScrollView(showsIndicators: false) {
-                                ForEach(Array(todoViewModel.completedTodos).suffix(DATA_SLICE_SIZE), id: \.id) { todo in
-                                    VStack {
-                                        TodoCard(todo: todo, width: UIScreen.main.bounds.width - 32)
-                                            .onTapGesture {
-                                                withAnimation {
-                                                    do {
-                                                        try todoViewModel.changeTodoCompleteStatus(todo: todo)
-                                                    } catch {}
-                                                }
-                                            }
-                                            .contextMenu {
-                                                TodoItemContextMenu(selectedTodo: todo, listType: .completed,editNavigation: $todoEditNavigation).environment(todoViewModel)
-                                            }
-                                    }
-                                }
-                            }
-                            .padding()
+                            Spacer()
                         }
-                        
-                        Spacer()
                     }
                     
-                }
-                
-                FloatingButton(action: {
-                    showingPlusSheet.toggle()
-                })
-                .padding()
-          
-                
-            }.sheet(isPresented: $showingPlusSheet) {
-                PlusSheetView(isPresentShowing: $showingPlusSheet)
-                    .environment(categoryViewModel)
-                    .environment(todoViewModel)
-            }.onAppear {
-                Task {
-                    todoViewModel.modelContext = context
-                    categoryViewModel.modelContext = context
-                    todoViewModel.fetchTodos()
-                    categoryViewModel.fetchCategories()
-                }
-            }.navigationDestination(isPresented: $todoEditNavigation.isVisible){
-                if let todo = todoEditNavigation.selectedTodo {
-                    TodoForm(isPresentShowing: $todoEditNavigation.isVisible, todo:todo,actionType: .edit)
+                    FloatingButton(action: {
+                        showingPlusSheet.toggle()
+                    })
+                    .padding()
+                    
+                }.sheet(isPresented: $showingPlusSheet) {
+                    PlusSheetView(isPresentShowing: $showingPlusSheet)
                         .environment(categoryViewModel)
                         .environment(todoViewModel)
+                }.onAppear {
+                    Task {
+                        todoViewModel.modelContext = context
+                        categoryViewModel.modelContext = context
+                        categoryViewModel.todoViewModel = todoViewModel
+                        todoViewModel.fetchTodos()
+                        categoryViewModel.fetchCategories()
+                    }
                 }
-               
+                .navigationDestination(isPresented: $todoEditNavigation.isVisible) {
+                    if let todo = todoEditNavigation.selectedTodo {
+                        TodoFormView(isPresentShowing: $todoEditNavigation.isVisible, todo: todo, actionType: .edit)
+                            .environment(categoryViewModel)
+                            .environment(todoViewModel)
+                    }
+                }
+                .navigationDestination(isPresented: $categoryEditNavigation.isVisible) {
+                    if let category = categoryEditNavigation.selectedCategory {
+                        CategoryFormView(isPresentShowing: $categoryEditNavigation.isVisible, category: category, actionType: .edit)
+                            .environment(categoryViewModel)
+                    }
+                }
             }
-            
         }
     }
 }
@@ -203,27 +233,15 @@ struct Header: View {
                         .font(.regular(size: 12))
                     
                     Text(String(localized: "welcome"))
-                        .foregroundStyle(.black)
                         .font(.regular(size: 14))
                 }
                 
                 Spacer()
-                
-                Button(action: {}) {
-                    ZStack {
-                        Circle()
-                            .stroke(Color.buttonCircle, lineWidth: 1)
-                            .frame(width: 36, height: 36)
-                        
-                        Image(systemName: "gearshape")
-                            .foregroundColor(.black)
-                            .font(.system(size: 20))
-                    }
-                }
             }
             
             ZStack {
-                Color.white
+                Color.cardColor
+                    .ignoresSafeArea(.all)
                 
                 HStack {
                     Text(String(localized: randomMotivationalMessage))
@@ -235,12 +253,12 @@ struct Header: View {
                     Spacer()
                     
                     Circle()
-                        .stroke(Color.buttonCircle, style: StrokeStyle(lineWidth: 6, lineCap: .round, lineJoin: .round))
+                        .stroke(Color.circleColor, style: StrokeStyle(lineWidth: 6, lineCap: .round, lineJoin: .round))
                         .frame(width: 52, height: 52)
                         .overlay {
                             Circle()
                                 .trim(from: 0, to: progress)
-                                .stroke(Color.black, style: StrokeStyle(lineWidth: 6, lineCap: .round, lineJoin: .round))
+                                .stroke(Color.button, style: StrokeStyle(lineWidth: 6, lineCap: .round, lineJoin: .round))
                                 .animation(.easeInOut(duration: 1.0), value: progress)
                                 .rotationEffect(.degrees(-90))
                             
@@ -284,7 +302,7 @@ struct PlusSheetView: View {
     
     var body: some View {
         ZStack {
-            Color(.systemGray6)
+            Color.background
                 .ignoresSafeArea(.all)
             
             VStack {
@@ -302,9 +320,9 @@ struct PlusSheetView: View {
                 Divider()
                 
                 TabView(selection: $selectedTab) {
-                    TodoForm(isPresentShowing: $isPresentShowing,todo:todoViewModel.newTodo).tag(0)
+                    TodoFormView(isPresentShowing: $isPresentShowing, todo: todoViewModel.newTodo).tag(0)
                     
-                    AddCategoryView(isPresentShowing: $isPresentShowing).tag(1)
+                    CategoryFormView(isPresentShowing: $isPresentShowing, category: categoryViewModel.newCategory).tag(1)
                 }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                 
             }.ignoresSafeArea(.all)
@@ -318,8 +336,7 @@ struct TodoItemContextMenu: View {
     var selectedTodo: TodoItem
     var listType: TodoListType
     
-    
-    @Binding var editNavigation:TodoEditNavigationState
+    @Binding var editNavigation: TodoEditNavigationState
     
     @Environment(TodoViewModel.self) private var todoViewModel: TodoViewModel
     
@@ -335,22 +352,22 @@ struct TodoItemContextMenu: View {
         }
         
         Button {
-            withAnimation {
-                editNavigation.selectedTodo = selectedTodo
-                editNavigation.isVisible = true
-            }
+            editNavigation.selectedTodo = selectedTodo
+            editNavigation.isVisible = true
         } label: {
             Label(String(localized: "edit"), systemImage: "pencil")
         }
         
         Button(role: .destructive) {
             withAnimation {
-                switch listType {
-                case .onProgress:
-                    todoViewModel.deleteTodo(from: &todoViewModel.onProgressTodos, selectedTodo)
-                case .completed:
-                    todoViewModel.deleteTodo(from: &todoViewModel.completedTodos, selectedTodo)
-                }
+                do {
+                    switch listType {
+                    case .onProgress:
+                        try todoViewModel.deleteTodo(from: &todoViewModel.onProgressTodos, selectedTodo)
+                    case .completed:
+                        try todoViewModel.deleteTodo(from: &todoViewModel.completedTodos, selectedTodo)
+                    }
+                } catch {}
             }
         } label: {
             Label(String(localized: "delete"), systemImage: "trash")
@@ -371,10 +388,11 @@ struct SectionHeader: View {
             
             if count != nil {
                 Circle()
-                    .foregroundStyle(Color.iconButtonCircle)
+                    .foregroundStyle(Color.circleColor)
                     .overlay {
                         Text("\(count!)")
                             .font(.medium(size: 12))
+                            
                     }
                     .frame(width: 18, height: 18)
             }

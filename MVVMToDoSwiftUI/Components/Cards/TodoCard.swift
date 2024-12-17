@@ -8,7 +8,7 @@ struct TodoCard: View {
 
     var body: some View {
         ZStack {
-            Color.white
+            Color.cardColor
 
             VStack {
                 HStack {

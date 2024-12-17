@@ -15,8 +15,6 @@ enum TodoFormActionType{
 }
 
 struct TodoFormView: View {
-   
-    
     // MARK: - Environment Objects
 
     @Environment(TodoViewModel.self) private var todoViewModel: TodoViewModel

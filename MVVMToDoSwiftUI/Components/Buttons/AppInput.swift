@@ -28,16 +28,17 @@ struct AppInput: View {
                 TextEditor(text: $text)
                     .frame(height: 140)
                     .padding(8)
-                    .background(Color.white)
+                    .background(Color.cardColor)
                     .cornerRadius(16)
-                    .overlay(RoundedRectangle(cornerRadius: 16).stroke(.gray))
+                    .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.cardColor))
+                    .scrollContentBackground(.hidden)
             } else {
                 TextField("", text: $text)
                     .frame(height: 52)
                     .padding(.horizontal, 12)
-                    .background(Color.white)
+                    .background(Color.cardColor)
                     .cornerRadius(16)
-                    .overlay(RoundedRectangle(cornerRadius: 16).stroke(.gray))
+                    .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.cardColor))
             }
         }
     }
