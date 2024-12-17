@@ -14,7 +14,7 @@ enum TodoFormActionType{
     case add
 }
 
-struct TodoForm: View {
+struct TodoFormView: View {
    
     
     // MARK: - Environment Objects
@@ -72,7 +72,7 @@ struct TodoForm: View {
                                 .padding(.horizontal)
 
                             ScrollView(.horizontal, showsIndicators: false) {
-                                HStack {
+                                HStack(spacing:12) {
                                     ForEach(categoryViewModel.categories.indices, id: \.self) { index in
                                         CategoryCard(category: categoryViewModel.categories[index])
                                             .onTapGesture {
@@ -95,7 +95,7 @@ struct TodoForm: View {
                                             )
                                             .scaleEffect(selectedCategoryIndex == index ? 1.1 : 1)
                                             .padding(.leading, index == 0 ? 16 : 0)
-                                            .padding(.horizontal, (index != 0 && index != categoryViewModel.categories.count - 1) ? 8 : 0)
+                                            .padding(.trailing, index == categoryViewModel.categories.count - 1 ? 16 : 0)
                                             .padding(.vertical, 12)
                                     }
                                 }
@@ -126,7 +126,7 @@ struct TodoForm: View {
 }
 
 #Preview {
-    TodoForm(isPresentShowing: .constant(true),todo:TodoViewModel().newTodo)
+    TodoFormView(isPresentShowing: .constant(true),todo:TodoViewModel().newTodo)
         .environment(TodoViewModel())
         .environment(CategoryViewModel())
 }

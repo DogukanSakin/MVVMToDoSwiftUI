@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddCategoryView: View {
+struct CategoryFormView: View {
     // MARK: - Environment Objects
     
     @Environment(CategoryViewModel.self) private var viewModel: CategoryViewModel
@@ -93,5 +93,5 @@ struct AddCategoryView: View {
 }
 
 #Preview {
-    AddCategoryView(isPresentShowing: .constant(true)).environment(CategoryViewModel())
+    CategoryFormView(isPresentShowing: .constant(true)).environment(CategoryViewModel())
 }
