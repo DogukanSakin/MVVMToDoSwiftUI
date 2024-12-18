@@ -28,8 +28,9 @@ enum CategoryFormValidationError: LocalizedError {
     var todoViewModel: TodoViewModel?
     var isLoading = false
     
-    init(_ todoViewModel: TodoViewModel? = nil) {
+    init(_ todoViewModel: TodoViewModel? = nil,modelContext: ModelContext? = nil) {
         self.todoViewModel = todoViewModel
+        self.modelContext = modelContext
     }
     
     func addCategory() throws {
@@ -41,13 +42,11 @@ enum CategoryFormValidationError: LocalizedError {
         fetchCategories()
     }
     
-    func updateCategory(_ todo: Category) throws {
+    func updateCategory(_ category: Category) throws {
         try modelContext?.save()
-        fetchCategories()
     }
     
-    func deleteCategory(from list: inout [Category], _ category: Category) throws {
-        guard let removeIndex = list.firstIndex(where: { $0.id == category.id }) else { return }
+    func deleteCategory( _ category: Category) throws {
         guard let todoViewModel else { return }
         
         for todo in todoViewModel.onProgressTodos + todoViewModel.completedTodos {
@@ -57,20 +56,23 @@ enum CategoryFormValidationError: LocalizedError {
         }
         
         modelContext?.delete(category)
-        list.remove(at: removeIndex)
         try modelContext?.save()
         todoViewModel.fetchTodos()
     }
     
     func fetchCategories() {
         isLoading = true
-        
+
         let fetchDescriptor = FetchDescriptor<Category>()
-        
+     
         do {
             categories = try modelContext?.fetch(fetchDescriptor) ?? []
+          
         } catch {}
         
+       
         isLoading = false
+        
+        
     }
 }

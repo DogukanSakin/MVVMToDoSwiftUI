@@ -50,7 +50,7 @@ struct WelcomeView: View {
                         .padding(.top, 20)
                     
                     AppButton(label: String(localized: "start")) {
-                        UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
+                        UserDefaults.standard.set(true, forKey: Constants.appLaunchKey)
                         navigateToTodos = true
                     }
                     .padding()

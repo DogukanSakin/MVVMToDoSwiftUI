@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - Todo Form Action Type
 
-enum TodoFormActionType{
+enum TodoFormActionType {
     case edit
     case add
 }
@@ -23,17 +23,17 @@ struct TodoFormView: View {
     // MARK: - Bindings
 
     @Binding var isPresentShowing: Bool
-    
+
     // MARK: - Props
-    
+
     var todo: TodoItem
     var actionType: TodoFormActionType = .add
 
     // MARK: - State
+
     @State private var selectedCategoryIndex: Int?
     @State private var isShowAlert: Bool = false
     @State private var alertMessage: String = ""
-    
 
     var body: some View {
         ZStack {
@@ -70,17 +70,15 @@ struct TodoFormView: View {
                                 .padding(.horizontal)
 
                             ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(spacing:12) {
+                                HStack(spacing: 12) {
                                     ForEach(categoryViewModel.categories.indices, id: \.self) { index in
                                         CategoryCard(category: categoryViewModel.categories[index])
                                             .onTapGesture {
                                                 withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
                                                     if selectedCategoryIndex == index {
                                                         selectedCategoryIndex = nil
-                                                        todo.category = nil
                                                     } else {
                                                         selectedCategoryIndex = index
-                                                        todo.category = categoryViewModel.categories[index]
                                                     }
                                                 }
                                             }
@@ -105,7 +103,34 @@ struct TodoFormView: View {
 
                         AppButton(label: String(localized: actionType == .add ? "add_new_todo" : "save"), action: {
                             do {
-                                try actionType == .add ? todoViewModel.addTodo() : todoViewModel.updateTodo(todo)
+                                if actionType == .add {
+                                    if let selectedCategoryIndex = selectedCategoryIndex {
+                                        todo.category = categoryViewModel.categories[selectedCategoryIndex]
+                                        categoryViewModel.categories[selectedCategoryIndex].todoItems?.append(todo)
+                                    }
+
+                                    try todoViewModel.addTodo()
+                                } else {
+                                    if let selectedCategoryIndex = selectedCategoryIndex {
+                                        if let oldCategory = todo.category,
+                                           let oldIndex = categoryViewModel.categories.firstIndex(of: oldCategory)
+                                        {
+                                            categoryViewModel.categories[oldIndex].todoItems?.removeAll { $0.id == todo.id }
+                                        }
+
+                                        todo.category = categoryViewModel.categories[selectedCategoryIndex]
+                                        categoryViewModel.categories[selectedCategoryIndex].todoItems?.append(todo)
+                                    } else {
+                                        if let oldCategory = todo.category,
+                                           let oldIndex = categoryViewModel.categories.firstIndex(of: oldCategory)
+                                        {
+                                            categoryViewModel.categories[oldIndex].todoItems?.removeAll { $0.id == todo.id }
+                                            todo.category = nil
+                                        }
+                                    }
+
+                                    try todoViewModel.updateTodo(todo)
+                                }
                                 isPresentShowing = false
                             } catch let error as TodoFormValidationError {
                                 alertMessage = error.errorDescription
@@ -124,7 +149,7 @@ struct TodoFormView: View {
 }
 
 #Preview {
-    TodoFormView(isPresentShowing: .constant(true),todo:TodoViewModel().newTodo)
+    TodoFormView(isPresentShowing: .constant(true), todo: TodoViewModel().newTodo)
         .environment(TodoViewModel())
         .environment(CategoryViewModel())
 }

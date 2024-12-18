@@ -22,20 +22,21 @@ struct CategoryEditNavigationState {
 
 struct TodoView: View {
     private let DATA_SLICE_SIZE: Int = 5
-    
-    // MARK: - Data Context
-    
-    @Environment(\.modelContext) var context
-    
+
     // MARK: - States
     
-    @State private var todoViewModel = TodoViewModel()
-    @State private var categoryViewModel = CategoryViewModel()
+    @State private var todoViewModel: TodoViewModel
+    @State private var categoryViewModel: CategoryViewModel
     @State private var showingPlusSheet = false
     @State private var todoEditNavigation = TodoEditNavigationState(selectedTodo: nil, isVisible: false)
     @State private var categoryEditNavigation = CategoryEditNavigationState(selectedCategory: nil, isVisible: false)
     
-    // MARK: - Formatted Data Arrays
+    init(context: ModelContext? = nil) {
+        let todoViewModel = TodoViewModel(modelContext: context)
+        let categoryViewModel = CategoryViewModel(todoViewModel, modelContext: context)
+        _categoryViewModel = State(initialValue: categoryViewModel)
+        _todoViewModel = State(initialValue: todoViewModel)
+    }
     
     var body: some View {
         NavigationStack {
@@ -126,7 +127,8 @@ struct TodoView: View {
                                                         Button(role: .destructive) {
                                                             withAnimation {
                                                                 do {
-                                                                    try categoryViewModel.deleteCategory(from: &categoryViewModel.categories, categoryViewModel.categories[index])
+                                                                    try categoryViewModel.deleteCategory(categoryViewModel.categories[index])
+                                                                    categoryViewModel.categories.remove(at: index)
                                                                 } catch {}
                                                             }
                                                         } label: {
@@ -178,14 +180,9 @@ struct TodoView: View {
                     PlusSheetView(isPresentShowing: $showingPlusSheet)
                         .environment(categoryViewModel)
                         .environment(todoViewModel)
-                }.onAppear {
-                    Task {
-                        todoViewModel.modelContext = context
-                        categoryViewModel.modelContext = context
-                        categoryViewModel.todoViewModel = todoViewModel
-                        todoViewModel.fetchTodos()
-                        categoryViewModel.fetchCategories()
-                    }
+                }.task {
+                    todoViewModel.fetchTodos()
+                    categoryViewModel.fetchCategories()
                 }
                 .navigationDestination(isPresented: $todoEditNavigation.isVisible) {
                     if let todo = todoEditNavigation.selectedTodo {
@@ -200,6 +197,7 @@ struct TodoView: View {
                             .environment(categoryViewModel)
                     }
                 }
+                
             }
         }
     }
@@ -361,11 +359,17 @@ struct TodoItemContextMenu: View {
         Button(role: .destructive) {
             withAnimation {
                 do {
+                    try todoViewModel.deleteTodo(selectedTodo)
+                    
                     switch listType {
                     case .onProgress:
-                        try todoViewModel.deleteTodo(from: &todoViewModel.onProgressTodos, selectedTodo)
+                        
+                        guard let removeIndex = todoViewModel.onProgressTodos.firstIndex(where: { $0.id == selectedTodo.id }) else { return }
+                        todoViewModel.onProgressTodos.remove(at: removeIndex)
+                        
                     case .completed:
-                        try todoViewModel.deleteTodo(from: &todoViewModel.completedTodos, selectedTodo)
+                        guard let removeIndex = todoViewModel.completedTodos.firstIndex(where: { $0.id == selectedTodo.id }) else { return }
+                        todoViewModel.completedTodos.remove(at: removeIndex)
                     }
                 } catch {}
             }
@@ -392,7 +396,6 @@ struct SectionHeader: View {
                     .overlay {
                         Text("\(count!)")
                             .font(.medium(size: 12))
-                            
                     }
                     .frame(width: 18, height: 18)
             }
@@ -412,5 +415,5 @@ struct SectionHeader: View {
     let preview = Preview(TodoItem.self, Category.self)
     preview.addExamples(TodoItem.samples)
     preview.addExamples(Category.samples)
-    return TodoView().modelContainer(preview.container)
+    return TodoView(context: preview.container.mainContext).modelContainer(preview.container)
 }

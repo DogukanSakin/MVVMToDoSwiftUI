@@ -31,6 +31,10 @@ enum TodoFormValidationError: LocalizedError {
     var completedTodos = [TodoItem]()
     var isLoading: Bool = false
     
+    init(modelContext: ModelContext? = nil) {
+        self.modelContext = modelContext
+    }
+    
     func addTodo() throws {
         guard !newTodo.title.isEmpty else { throw TodoFormValidationError.empty }
         modelContext?.insert(newTodo)
@@ -41,7 +45,6 @@ enum TodoFormValidationError: LocalizedError {
     
     func updateTodo(_ todo: TodoItem) throws {
         try modelContext?.save()
-        fetchTodos()
     }
     
     func fetchTodos() {
@@ -72,16 +75,12 @@ enum TodoFormValidationError: LocalizedError {
         isLoading = false
     }
     
-    func deleteTodo(from list: inout [TodoItem], _ todo: TodoItem) throws {
-        guard let removeIndex = list.firstIndex(where:{$0.id == todo.id}) else {return}
+    func deleteTodo(_ todo: TodoItem) throws {
         modelContext?.delete(todo)
-        list.remove(at: removeIndex)
-        do{
+     
+        do {
             try modelContext?.save()
-        }
-        catch{
-            
-        }
+        } catch {}
     }
     
     func changeTodoCompleteStatus(todo: TodoItem) throws {
