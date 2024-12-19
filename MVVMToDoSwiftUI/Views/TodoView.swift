@@ -69,7 +69,9 @@ struct TodoView: View {
                                         ForEach(todos.indices, id: \.self) { index in
                                             if index < todos.count {
                                                 TodoCard(todo: todos[index], listType: .onProgress) {
-                                                    _ in
+                                                    todo in
+                                                    todoFormNavigation.params?.selectedTodo = todo
+                                                    todoFormNavigation.isVisible = true
                                                 }
                                                 .padding(.leading, index == 0 ? 16 : 0)
                                                 .padding(.trailing, index == todos.count - 1 ? 16 : 0)
@@ -130,7 +132,9 @@ struct TodoView: View {
                                     ForEach(Array(todoViewModel.completedTodos).suffix(DATA_SLICE_SIZE), id: \.id) { todo in
                                         VStack {
                                             TodoCard(todo: todo, width: UIScreen.main.bounds.width - 32, listType: .completed) {
-                                                _ in
+                                                todo in
+                                                todoFormNavigation.params?.selectedTodo = todo
+                                                todoFormNavigation.isVisible = true
                                             }
                                             .onTapGesture {
                                                 withAnimation {
