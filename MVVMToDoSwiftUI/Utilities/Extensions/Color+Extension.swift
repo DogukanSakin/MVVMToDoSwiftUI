@@ -15,4 +15,3 @@ extension Color {
     static let welcomePagePrimaryColor = Color("WelcomePagePrimary")
     static let welcomePageSecondaryColor = Color("WelcomePageSecondary")
 }
-

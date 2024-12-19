@@ -5,14 +5,15 @@
 //  Created by Doğukan Sakin on 31.10.2024.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct WelcomeView: View {
     // MARK: - States
     
     @State private var navigateToTodos = false
    
+    // MARK: - Render
 
     var body: some View {
         NavigationStack {
@@ -62,9 +63,6 @@ struct WelcomeView: View {
             }
         }
     }
-    
-
-
 }
 
 #Preview {

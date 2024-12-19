@@ -23,6 +23,8 @@ struct TabButton: View {
     var isSelected: Bool
     var action: () -> Void = {}
 
+    // MARK: - Render
+
     var body: some View {
         Button(action: action, label: {
             Text(label)

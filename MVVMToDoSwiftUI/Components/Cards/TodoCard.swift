@@ -1,8 +1,16 @@
 import SwiftUI
 
 struct TodoCard: View {
+    // MARK: - Props
+
     let todo: TodoItem
     var width: CGFloat = 300
+    var listType: TodoListType = .completed
+    var onTapEdit: (TodoItem) -> Void = { _ in }
+
+    // MARK: - Environments
+
+    @Environment(TodoViewModel.self) private var todoViewModel: TodoViewModel
 
     // MARK: - Render
 
@@ -67,6 +75,43 @@ struct TodoCard: View {
         }
         .frame(width: width, height: 120)
         .clipShape(RoundedRectangle(cornerRadius: 15))
+        .contextMenu {
+            Button {
+                withAnimation {
+                    do {
+                        try todoViewModel.changeTodoCompleteStatus(todo: todo)
+                    } catch {}
+                }
+            } label: {
+                Label(String(localized: todo.isDone ? "mark_as_uncompleted" : "mark_as_completed"), systemImage: "checkmark")
+            }
+
+            Button {
+                onTapEdit(todo)
+            } label: {
+                Label(String(localized: "edit"), systemImage: "pencil")
+            }
+
+            Button(role: .destructive) {
+                withAnimation {
+                    do {
+                        try todoViewModel.deleteTodo(todo)
+
+                        switch listType {
+                        case .onProgress:
+                            guard let removeIndex = todoViewModel.onProgressTodos.firstIndex(where: { $0.id == todo.id }) else { return }
+                            todoViewModel.onProgressTodos.remove(at: removeIndex)
+
+                        case .completed:
+                            guard let removeIndex = todoViewModel.completedTodos.firstIndex(where: { $0.id == todo.id }) else { return }
+                            todoViewModel.completedTodos.remove(at: removeIndex)
+                        }
+                    } catch {}
+                }
+            } label: {
+                Label(String(localized: "delete"), systemImage: "trash")
+            }
+        }
     }
 }
 
@@ -74,6 +119,7 @@ struct TodoCard: View {
     ZStack {
         Color.background.edgesIgnoringSafeArea(.all)
 
-        TodoCard(todo: TodoItem(id: UUID(), title: "Test", date: .now, comment: "Lorem ipsum", category: Category(id: UUID(), name: "Work", containerColor: .red, todoItems: [])))
+        TodoCard(todo: TodoItem(id: UUID(), title: "Test", date: .now, comment: "Lorem ipsum", category: Category(id: UUID(), name: "Work", containerColor: .red, todoItems: [])), onTapEdit: { _ in })
+            .environment(TodoViewModel())
     }
 }

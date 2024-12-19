@@ -16,8 +16,8 @@ final class TodoItem: Identifiable {
     var comment: String?
     var category: Category?
     var isDone: Bool = false
-    
-    init(id: UUID, title: String, date: Date, comment: String? = nil, category: Category? = nil,isDone: Bool = false) {
+
+    init(id: UUID, title: String, date: Date, comment: String? = nil, category: Category? = nil, isDone: Bool = false) {
         self.id = id
         self.title = title
         self.date = date
@@ -26,6 +26,3 @@ final class TodoItem: Identifiable {
         self.isDone = isDone
     }
 }
-
-
-

@@ -9,29 +9,42 @@ import SwiftUI
 
 // MARK: - Category Form Action Type
 
-enum CategoryFormActionType{
+enum CategoryFormActionType {
     case edit
     case add
 }
 
+// MARK: - Navigation Params
+
+struct CategoryFormNavigationParams {
+    var selectedCategory: Category?
+
+    static var defaultParams: CategoryFormNavigationParams {
+        .init(selectedCategory: nil)
+    }
+}
+
 struct CategoryFormView: View {
     // MARK: - Environment Objects
-    
+
     @Environment(CategoryViewModel.self) private var viewModel: CategoryViewModel
-    
+    @Environment(\.dismiss) private var dismiss
+
     // MARK: - Bindings
-    
+
     @Binding var isPresentShowing: Bool
-    
+
     // MARK: - Props
-    
-    var category:Category
+
+    var category: Category
     var actionType: CategoryFormActionType = .add
-    
+
     // MARK: - States
 
     @State var isShowAlert: Bool = false
     @State var alertMessage: String = ""
+
+    // MARK: - Render
 
     var body: some View {
         GeometryReader { _ in
@@ -78,7 +91,7 @@ struct CategoryFormView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.vertical)
 
-                        CategoryCard(category: category)
+                        CategoryCard(category: category).environment(viewModel)
 
                         Spacer()
 
@@ -86,6 +99,8 @@ struct CategoryFormView: View {
                             do {
                                 try actionType == .add ? viewModel.addCategory() : viewModel.updateCategory(category)
                                 isPresentShowing = false
+
+                                print("save and go back", isPresentShowing)
                             } catch let error as CategoryFormValidationError {
                                 alertMessage = error.errorDescription
                                 isShowAlert = true
@@ -105,5 +120,5 @@ struct CategoryFormView: View {
 }
 
 #Preview {
-    CategoryFormView(isPresentShowing: .constant(true),category:CategoryViewModel().newCategory).environment(CategoryViewModel())
+    CategoryFormView(isPresentShowing: .constant(true), category: CategoryViewModel().newCategory).environment(CategoryViewModel())
 }

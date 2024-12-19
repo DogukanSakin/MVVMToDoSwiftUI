@@ -12,6 +12,13 @@ struct CategoryCard: View {
 
     let category: Category
     var width: CGFloat = 160
+    var onTapEdit: (Category) -> Void = { _ in }
+
+    // MARK: - Environments
+
+    @Environment(CategoryViewModel.self) private var categoryViewModel: CategoryViewModel
+
+    // MARK: - Render
 
     var body: some View {
         ZStack {
@@ -58,12 +65,32 @@ struct CategoryCard: View {
         }
         .frame(width: width, height: 180)
         .clipShape(RoundedRectangle(cornerRadius: 15))
+        .contextMenu {
+            Button {
+                onTapEdit(category)
+            } label: {
+                Label(String(localized: "edit"), systemImage: "pencil")
+            }
+
+            Button(role: .destructive) {
+                withAnimation {
+                    do {
+                        try categoryViewModel.deleteCategory(category)
+                        guard let removeIndex = categoryViewModel.categories.firstIndex(where: { $0.id == category.id }) else { return }
+                        categoryViewModel.categories.remove(at: removeIndex)
+                    } catch {}
+                }
+            } label: {
+                Label(String(localized: "delete"), systemImage: "trash")
+            }
+        }
     }
 }
 
 #Preview {
     ZStack {
         Color.background.edgesIgnoringSafeArea(.all)
-        CategoryCard(category: .init(id: UUID(), name: "CategoryCategoryCategoryCategory", containerColor: .yellow, todoItems: []))
+        CategoryCard(category: .init(id: UUID(), name: "CategoryCategoryCategoryCategory", containerColor: .yellow, todoItems: []), onTapEdit: { _ in })
+            .environment(CategoryViewModel())
     }
 }

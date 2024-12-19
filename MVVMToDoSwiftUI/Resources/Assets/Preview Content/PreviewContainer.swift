@@ -10,7 +10,7 @@ import SwiftData
 
 struct Preview {
     let container: ModelContainer
-    
+
     init(_ models: any PersistentModel.Type...) {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let scheme = Schema(models)
@@ -20,14 +20,13 @@ struct Preview {
             fatalError("Could not initialize ModelContainer")
         }
     }
-    
+
     func addExamples(_ examples: [any PersistentModel]) {
         print(examples)
         Task { @MainActor in
-            examples.forEach { example in
+            for example in examples {
                 container.mainContext.insert(example)
             }
         }
-        
     }
 }

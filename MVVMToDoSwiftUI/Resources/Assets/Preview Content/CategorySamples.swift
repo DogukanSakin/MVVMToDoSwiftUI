@@ -7,14 +7,13 @@
 
 import Foundation
 
-extension Category{
+extension Category {
     static var samples: [Category] {
         [
-            .init(id: UUID(), name: "Category 1",containerColor: .red),
-            .init(id: UUID(), name: "Category 2",containerColor: .green),
-            .init(id: UUID(), name: "Category 3",containerColor: .blue),
-            .init(id: UUID(), name: "Category 4",containerColor: .cyan),
-            
+            .init(id: UUID(), name: "Category 1", containerColor: .red),
+            .init(id: UUID(), name: "Category 2", containerColor: .green),
+            .init(id: UUID(), name: "Category 3", containerColor: .blue),
+            .init(id: UUID(), name: "Category 4", containerColor: .cyan),
         ]
     }
 }

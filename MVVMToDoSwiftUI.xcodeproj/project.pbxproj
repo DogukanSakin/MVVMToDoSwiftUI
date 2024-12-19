@@ -25,6 +25,12 @@
 		4483BB712CDD32F50058B8CF /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4483BB702CDD32F50058B8CF /* FloatingButton.swift */; };
 		4483BB752CDD3D3D0058B8CF /* TodoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4483BB742CDD3D3D0058B8CF /* TodoCard.swift */; };
 		44962D572D120A11003572DB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44962D562D120A0C003572DB /* Constants.swift */; };
+		449F5DC32D146F5F007E2E12 /* AllTodosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F5DC22D146F5F007E2E12 /* AllTodosView.swift */; };
+		449F5DC52D1473BA007E2E12 /* AllCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F5DC42D1473BA007E2E12 /* AllCategoriesView.swift */; };
+		449F5DC72D1478C0007E2E12 /* PlusSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F5DC62D1478C0007E2E12 /* PlusSheetView.swift */; };
+		449F5DCB2D147979007E2E12 /* BaseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F5DCA2D147979007E2E12 /* BaseHeader.swift */; };
+		449F5DCD2D1479FA007E2E12 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F5DCC2D1479FA007E2E12 /* SectionHeader.swift */; };
+		449F5DD12D147C42007E2E12 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F5DD02D147C39007E2E12 /* NavigationState.swift */; };
 		44BB090B2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB090A2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift */; };
 		44BB090D2CD3FA120059EE0D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB090C2CD3FA120059EE0D /* WelcomeView.swift */; };
 		44BB090F2CD3FA130059EE0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44BB090E2CD3FA130059EE0D /* Assets.xcassets */; };
@@ -82,6 +88,12 @@
 		4483BB702CDD32F50058B8CF /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		4483BB742CDD3D3D0058B8CF /* TodoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCard.swift; sourceTree = "<group>"; };
 		44962D562D120A0C003572DB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		449F5DC22D146F5F007E2E12 /* AllTodosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTodosView.swift; sourceTree = "<group>"; };
+		449F5DC42D1473BA007E2E12 /* AllCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCategoriesView.swift; sourceTree = "<group>"; };
+		449F5DC62D1478C0007E2E12 /* PlusSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusSheetView.swift; sourceTree = "<group>"; };
+		449F5DCA2D147979007E2E12 /* BaseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHeader.swift; sourceTree = "<group>"; };
+		449F5DCC2D1479FA007E2E12 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		449F5DD02D147C39007E2E12 /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
 		44BB09072CD3FA120059EE0D /* MVVMToDoSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMToDoSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44BB090A2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMToDoSwiftUIApp.swift; sourceTree = "<group>"; };
 		44BB090C2CD3FA120059EE0D /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -158,6 +170,23 @@
 				445D57652CE0E3BE00A622E3 /* CategoryCard.swift */,
 			);
 			path = Cards;
+			sourceTree = "<group>";
+		};
+		449F5DC82D147945007E2E12 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				449F5DCA2D147979007E2E12 /* BaseHeader.swift */,
+				449F5DCC2D1479FA007E2E12 /* SectionHeader.swift */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		449F5DCF2D147C22007E2E12 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				449F5DD02D147C39007E2E12 /* NavigationState.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		44BB08FE2CD3FA120059EE0D = {
@@ -252,6 +281,7 @@
 				44962D562D120A0C003572DB /* Constants.swift */,
 				44514D582D08CA0900AC4B3F /* MotivationalMessage.swift */,
 				44BB09442CD3FEAA0059EE0D /* Extensions */,
+				449F5DCF2D147C22007E2E12 /* Navigation */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -283,6 +313,9 @@
 				44CAF0382CD67A4E008AACCC /* TodoView.swift */,
 				445D575B2CE0D83F00A622E3 /* TodoFormView.swift */,
 				445D575D2CE0D84800A622E3 /* CategoryFormView.swift */,
+				449F5DC22D146F5F007E2E12 /* AllTodosView.swift */,
+				449F5DC42D1473BA007E2E12 /* AllCategoriesView.swift */,
+				449F5DC62D1478C0007E2E12 /* PlusSheetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -315,6 +348,7 @@
 		44CAF0352CD676E4008AACCC /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				449F5DC82D147945007E2E12 /* Headers */,
 				4483BB732CDD3D310058B8CF /* Cards */,
 				4483BB722CDD3D190058B8CF /* Buttons */,
 			);
@@ -468,10 +502,16 @@
 				44F8BEE12CF650CE00CD9976 /* AppInput.swift in Sources */,
 				44BB090D2CD3FA120059EE0D /* WelcomeView.swift in Sources */,
 				4483BB752CDD3D3D0058B8CF /* TodoCard.swift in Sources */,
+				449F5DC72D1478C0007E2E12 /* PlusSheetView.swift in Sources */,
 				442B01B02D0B6841006875AC /* TodoSamples.swift in Sources */,
+				449F5DCD2D1479FA007E2E12 /* SectionHeader.swift in Sources */,
+				449F5DCB2D147979007E2E12 /* BaseHeader.swift in Sources */,
 				44BB090B2CD3FA120059EE0D /* MVVMToDoSwiftUIApp.swift in Sources */,
 				44514D592D08CA1200AC4B3F /* MotivationalMessage.swift in Sources */,
 				44BB09532CD40E480059EE0D /* Color+Extension.swift in Sources */,
+				449F5DC32D146F5F007E2E12 /* AllTodosView.swift in Sources */,
+				449F5DD12D147C42007E2E12 /* NavigationState.swift in Sources */,
+				449F5DC52D1473BA007E2E12 /* AllCategoriesView.swift in Sources */,
 				44CAF03F2CD69A4D008AACCC /* Category.swift in Sources */,
 				446A0B702CDFBAA9000138FD /* Formatter+Extension.swift in Sources */,
 				445D57622CE0D8FF00A622E3 /* CategoryViewModel.swift in Sources */,

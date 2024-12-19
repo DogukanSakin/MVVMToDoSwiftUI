@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 @Model
 final class Category: Identifiable {
@@ -28,7 +28,7 @@ final class Category: Identifiable {
 
     var todoItems: [TodoItem]?
 
-    init(id: UUID, name: String, containerColor: Color, labelColor: Color = .black, todoItems: [TodoItem]? = nil) {
+    init(id: UUID, name: String, containerColor: Color, labelColor: Color = .white, todoItems: [TodoItem]? = nil) {
         self.id = id
         self.name = name
         self._containerColor = CodableColor(color: containerColor)
@@ -36,6 +36,3 @@ final class Category: Identifiable {
         self.todoItems = todoItems
     }
 }
-
-
-

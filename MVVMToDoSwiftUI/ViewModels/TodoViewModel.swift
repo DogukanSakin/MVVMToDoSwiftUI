@@ -24,7 +24,7 @@ enum TodoFormValidationError: LocalizedError {
     }
 }
 
-@Observable class TodoViewModel {
+@Observable final class TodoViewModel {
     var modelContext: ModelContext?
     var newTodo = TodoItem(id: UUID(), title: "", date: .now)
     var onProgressTodos = [TodoItem]()

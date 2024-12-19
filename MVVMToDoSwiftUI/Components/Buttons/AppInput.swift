@@ -17,6 +17,8 @@ struct AppInput: View {
 
     @Binding var text: String
 
+    // MARK: - Render
+
     var body: some View {
         VStack(alignment: .leading) {
             Text(String(localized: placeholderLocalizedValue))

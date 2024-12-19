@@ -15,6 +15,8 @@ struct AppButton: View {
     var labelSize: CGFloat = 16
     var action: () -> Void = {}
 
+    // MARK: - Render
+
     var body: some View {
         Button(action: action, label: {
             Text(label)

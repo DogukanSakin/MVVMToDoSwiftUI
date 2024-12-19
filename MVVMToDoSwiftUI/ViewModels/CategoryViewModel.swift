@@ -21,14 +21,14 @@ enum CategoryFormValidationError: LocalizedError {
     }
 }
 
-@Observable class CategoryViewModel {
+@Observable final class CategoryViewModel {
     var modelContext: ModelContext?
     var newCategory: Category = .init(id: UUID(), name: "", containerColor: .red)
     var categories = [Category]()
     var todoViewModel: TodoViewModel?
     var isLoading = false
     
-    init(_ todoViewModel: TodoViewModel? = nil,modelContext: ModelContext? = nil) {
+    init(_ todoViewModel: TodoViewModel? = nil, modelContext: ModelContext? = nil) {
         self.todoViewModel = todoViewModel
         self.modelContext = modelContext
     }
@@ -46,7 +46,7 @@ enum CategoryFormValidationError: LocalizedError {
         try modelContext?.save()
     }
     
-    func deleteCategory( _ category: Category) throws {
+    func deleteCategory(_ category: Category) throws {
         guard let todoViewModel else { return }
         
         for todo in todoViewModel.onProgressTodos + todoViewModel.completedTodos {
@@ -70,9 +70,6 @@ enum CategoryFormValidationError: LocalizedError {
           
         } catch {}
         
-       
         isLoading = false
-        
-        
     }
 }

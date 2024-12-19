@@ -11,24 +11,27 @@ import SwiftUI
 @main
 struct MVVMToDoSwiftUIApp: App {
     @State private var isFirstLaunch: Bool = UserDefaults.standard.bool(forKey: Constants.appLaunchKey) == false
+    
     let container: ModelContainer
     
     var body: some Scene {
         WindowGroup {
-            if isFirstLaunch {
-                WelcomeView()
-            } else {
-                TodoView(context: container.mainContext)
+            NavigationStack {
+                if isFirstLaunch {
+                    WelcomeView()
+                } else {
+                    TodoView(context: container.mainContext)
+                }
             }
         }
         .modelContainer(container)
     }
     
     init() {
-            do {
-                container = try ModelContainer(for: TodoItem.self,Category.self)
-            } catch {
-                fatalError("Failed to create ModelContainer")
-            }
+        do {
+            container = try ModelContainer(for: TodoItem.self, Category.self)
+        } catch {
+            fatalError("Failed to create ModelContainer")
         }
+    }
 }

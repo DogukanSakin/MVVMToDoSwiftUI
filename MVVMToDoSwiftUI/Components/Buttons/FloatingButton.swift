@@ -12,6 +12,8 @@ struct FloatingButton: View {
 
     var action: () -> Void = {}
 
+    // MARK: - Render
+
     var body: some View {
         Button(action: action) {
             ZStack {
